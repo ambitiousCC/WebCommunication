@@ -48,6 +48,7 @@ function checkUsername() {
     if (flag) {
         //用户名合法
         $("#r_username").css("border", "");
+        $("#r_username").css("border-bottom", "2px solid green");
         $("#r_u_msg").html("");
     } else {
         //用户名非法,加一个红色边框
@@ -63,21 +64,57 @@ function checkPassword() {
     //1.获取密码值
     var password = $("#r_password").val();
     //2.定义正则
-    var reg_password = /^\w{8,30}$/;
+    var reg_password = /^((\w)|([:!@#$%^&*_])){6,20}$/;
+    var strong_password = /^(?![a-zA-z]+$)(?!\d+$)(?![:!@#$%^&*_]+$)(?![a-zA-z\d]+$)(?![a-zA-z!:@#$%^&*_]+$)(?![\d!:@#$%^&_*]+$)[a-zA-Z\d!:@#$%^&*_]+$/;
+    var normal_password = /^(?![a-zA-z]+$)(?!\d+$)(?![:!@#$%^&*_]+$)[a-zA-Z\d!:@#$%^&*_]+$/;
+    var simple_password = /^(?:\d+|[a-zA-Z]+|[:!@#$%^&_*]+)$/;
 
     //3.判断，给出提示信息
     var flag = reg_password.test(password);
+    var flag1 = strong_password.test(password);
+    var flag2 = normal_password.test(password);
+    var flag3 = simple_password.test(password);
     if (flag) {
         //密码合法
-        $("#r_password").css("border", "");
-        $("#r_p_msg").html("");
-    } else {
+        if(flag1) {
+            $("#r_password").css("border", "");
+            $("#r_password").css("border-bottom", "2px solid green");
+        } else if (flag2) {
+            $("#r_password").css("border", "");
+            $("#r_password").css("border-bottom", "2px solid skyblue");
+        } else if (flag3) {
+            $("#r_password").css("border", "");
+            $("#r_password").css("border-bottom", "2px solid orange");
+        } else {
+            $("#r_password").css("border", "");
+            $("#r_p_msg").html("");
+        }
+    } else if (password.length < 6 || password.length > 20){
         //密码非法,加一个红色边框
-        $("#r_password").css("border", "1px solid red");
+        $("#r_password").css("border", "2px solid red");
         $("#r_p_msg").html("密码长度在6~20位");
+    } else if (flag) {
+        $("#r_password").css("border", "2px solid red");
+        $("#r_p_msg").html("密码只允许包含:!@#$%^&*_");
     }
 
     return flag;
+}
+var confirmpasswordtimeouotID;
+function confirmPassword() {
+    var password = $("#r_password").val();
+    var confirm = $("#r_confirm").val();
+    clearTimeout(confirmpasswordtimeouotID);
+    confirmpasswordtimeouotID = setTimeout(function () {
+        if(password!=confirm) {
+            $("#r_confirm").css("border", "2px solid red");
+            $("#r_r_p_msg").html("两次输入的密码不一致");
+        } else {
+            $("#r_confirm").css("border", "");
+            $("#r_confirm").css("border-bottom", "2px solid green");
+            $("#r_r_p_msg").html("");
+        }
+    })
 }
 
 //校验邮箱
@@ -90,7 +127,8 @@ function checkEmail() {
     //3.判断
     var flag = reg_email.test(email);
     if (flag) {
-        $("#r_email").css("border", "");
+        $("#r_password").css("border-bottom", "");
+        $("#r_email").css("border-bottom", "2px solid green");
         $("#r_e_msg").html("");
     } else {
         $("#r_email").css("border", "1px solid red");
@@ -136,7 +174,7 @@ $(function () {
     //当表单提交时，调用所有的校验方法：注册的方法
     $("#create").click(function () {
         //1.发送数据到服务器
-        if (checkUsername() && checkPassword() && checkEmail()) {
+        if (checkUsername() && checkPassword() && checkEmail() && confirmPassword()) {
             var username = $("#r_username").val();
             var password = md5($("#r_password").val());
             var email = $("#r_email").val();
@@ -177,12 +215,6 @@ $(function () {
     //当某一个组件失去焦点是，调用对应的校验方法
     $("#r_username").blur(checkUsername);
     $("#r_password").blur(checkPassword);
+    $("#r_confirm").blur(confirmPassword);
     $("#r_email").blur(checkEmail);
-
 });
-
-function encrypt(data) {
-    var key  = CryptoJS.enc.Latin1.parse('dufy20170329java');
-    var iv   = CryptoJS.enc.Latin1.parse('dufy20170329java');
-    return CryptoJS.AES.encrypt(data, key, {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding}).toString();
-}
