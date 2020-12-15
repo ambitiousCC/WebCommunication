@@ -7,6 +7,7 @@ import beans.User;
 import dao.Impl.UserDAOImpl;
 import dao.UserDAO;
 import service.UserService;
+import web.utils.DESUtil;
 import web.utils.MailUtils;
 import web.utils.UuidUtil;
 
@@ -17,7 +18,6 @@ import java.util.List;
  * 对用户信息的增删改查
  */
 public class UserServiceImpl implements UserService {
-    String webLocation = "https://bbs.ambitiouscc.com";
     private UserDAO userDAO = new UserDAOImpl();
     /**
      * 传入别人的user_id
@@ -38,24 +38,27 @@ public class UserServiceImpl implements UserService {
         return userDAO.FilterUser(user);
     }
 
+    @Override
+    public boolean removeUser(Long user_id) {
+        return userDAO.removeUser(user_id);
+    }
+
     /**
      * 注册功能完成
      * @param user
      * @return
      */
     @Override
-    public boolean regist(User user) {
+    public boolean regist(User user,String webLocation) {
         user.setCode(UuidUtil.getUuid());
         //设置激活状态
         user.setStatus("N");
         //设置账号创建时间
         user.setCreate_user_time(new Date());
         userDAO.addUser(user);
-        String email = user.getEmail();
-        System.out.println(email+"这个是获取到的邮箱");
         //邮箱！！！！！
-        String content="<a href='"+webLocation+"/user/activeAccount?code="+user.getCode()+"'>点击激活您在论坛的账号</a>";
-        return MailUtils.sendMail(user.getUsername(),email,content,"测试邮件");
+        String url = "http://localhost:8082/user/activeAccount?code="+user.getCode();
+        return MailUtils.sendMail(user.getUsername(),user.getEmail(),url,"请激活账号您在编程爱好者交流平台的账号");
     }
     /**
      * 传入注册名称，判断是否已经存在用户

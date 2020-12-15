@@ -7,10 +7,7 @@ import service.LoginService;
 import service.UserService;
 import service.impl.LoginServiceImpl;
 import service.impl.UserServiceImpl;
-import web.utils.EncodingUtils;
-import web.utils.Md5Util;
-import web.utils.WriteUitl;
-import web.utils.isEmptyStr;
+import web.utils.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -45,7 +42,23 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        String path = req.getRequestURI();
+//        System.out.println(path);
+//        String params = path.substring(path.indexOf("/",1)+1,path.length());
+//        System.out.println(params);
+//
+//
+//        String out  = null;
+//        try {
+//            out = AesEncryptUtil.desEncrypt(params).trim();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(out);
+//        path = "/user/"+out;
         String path = req.getServletPath();
+
+
         if (Objects.equals("/user/login", path)) {
             login(req, resp);
         }
@@ -120,8 +133,6 @@ public class UserServlet extends HttpServlet {
                 //判断是否登录成功
                 //数据库对密码进行二次加密
                 try {
-                    System.out.println(user.getPassword());
-                    System.out.println(Md5Util.encodeByMd5(user.getPassword()));
                     user.setPassword(Md5Util.encodeByMd5(user.getPassword()));
                 } catch (Exception e) {
                     System.out.println("紧急！加密方法失效");
@@ -139,8 +150,15 @@ public class UserServlet extends HttpServlet {
                         req.setAttribute("user", safeUser);
                         info.setFlag(true);
                     } else {
+                        //删除冗余信息
+                        boolean deleteFlag = userService.removeUser(u.getUser_id());
+                        if(deleteFlag) {
+                            System.out.println("删除冗余用户"+u.getUsername()+"成功");
+                        } else {
+                            System.out.println("注销失败");
+                        }
                         info.setFlag(false);
-                        info.setErrorMsg("您的账号尚未激活");
+                        info.setErrorMsg("您的账号未在规定时间激活，请重新注册");
                     }
                     //返回地址：应该是首页？需要后端给位置
                 } else {
@@ -199,8 +217,10 @@ public class UserServlet extends HttpServlet {
             if (!flagName) {
                 //默认昵称和用户名一致
                 user.setNickname(user.getUsername());
+                String weblocation = req.getScheme() + "://" + req.getServerName()
+                        + ":" + req.getServerPort();
                 //进一步注册
-                boolean flag = userService.regist(user);
+                boolean flag = userService.regist(user,weblocation);
                 //4向前台响应
                 if (flag) {
                     //成功注册
@@ -240,6 +260,17 @@ public class UserServlet extends HttpServlet {
             req.getSession().invalidate();
             //重定向
             resp.sendRedirect("/main");
+    }
+
+    /**
+     * 注销
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    private void removeUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
     }
 
     /**
@@ -305,7 +336,10 @@ public class UserServlet extends HttpServlet {
      */
     private void activeAccount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取激活码
+        String queryString = req.getQueryString();
+        System.out.println(queryString);
         String code = req.getParameter("code");
+        System.out.println(code);
         if (code != null) {
             //确定code是否正确
             boolean flag = userService.activeAccount(code);

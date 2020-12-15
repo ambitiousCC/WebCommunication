@@ -101,6 +101,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
+<!--        <url-pattern>/user/*</url-pattern>-->
         <url-pattern>/user/login</url-pattern>
         <url-pattern>/user/regist</url-pattern>
         <url-pattern>/user/exist</url-pattern>

@@ -14,6 +14,14 @@ public interface UserService {
      * @return
      */
     User findOtherUser(Long user_id);
+
+    /**
+     * 注销用户
+     * @param user_id
+     * @return
+     */
+    boolean removeUser(Long user_id);
+
     /**
      * 传入登录的user,判断是否登录成功--登录查询
      * @param user
@@ -23,9 +31,10 @@ public interface UserService {
     /**
      * 注册功能完成
      * @param user
+     * @param weblocation 主机位置
      * @return
      */
-    boolean regist(User user);
+    boolean regist(User user, String weblocation);
     /**
      * 判断用户名是否已经存在
      * @param username

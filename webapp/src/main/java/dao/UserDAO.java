@@ -15,6 +15,8 @@ public interface UserDAO {
      */
     boolean addUser(User user);
 
+    boolean removeUser(Long user_id);
+
     /**
      * 判断用户是否存在
      * @param username

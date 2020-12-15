@@ -63,7 +63,7 @@ function checkPassword() {
     //1.获取密码值
     var password = $("#r_password").val();
     //2.定义正则
-    var reg_password = /^\w{8,20}$/;
+    var reg_password = /^\w{8,30}$/;
 
     //3.判断，给出提示信息
     var flag = reg_password.test(password);
@@ -74,7 +74,7 @@ function checkPassword() {
     } else {
         //密码非法,加一个红色边框
         $("#r_password").css("border", "1px solid red");
-        $("#r_p_msg").html("密码长度在6~15位");
+        $("#r_p_msg").html("密码长度在6~20位");
     }
 
     return flag;
@@ -114,6 +114,7 @@ $(function () {
     $("#login").click(function () {
         var username = $("#username").val();
         var password = md5($("#password").val());
+        // var target = encrypt("login");
         $.post("/user/login", {
             username:username,
             password:password
@@ -179,3 +180,9 @@ $(function () {
     $("#r_email").blur(checkEmail);
 
 });
+
+function encrypt(data) {
+    var key  = CryptoJS.enc.Latin1.parse('dufy20170329java');
+    var iv   = CryptoJS.enc.Latin1.parse('dufy20170329java');
+    return CryptoJS.AES.encrypt(data, key, {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding}).toString();
+}
