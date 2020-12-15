@@ -52,7 +52,7 @@ function checkUsername() {
         $("#r_u_msg").html("");
     } else {
         //用户名非法,加一个红色边框
-        $("#r_username").css("border", "1px solid red");
+        $("#r_username").css("border", "2px solid red");
         $("#r_u_msg").html("输入的用户名只能为英文且在4~20位");
     }
 
@@ -111,10 +111,11 @@ function confirmPassword() {
             $("#r_r_p_msg").html("两次输入的密码不一致");
         } else {
             $("#r_confirm").css("border", "");
-            $("#r_confirm").css("border-bottom", "2px solid green");
+            $("#r_confirm").css("border-bottom", $("#r_password").css("border-bottom"));
             $("#r_r_p_msg").html("");
         }
     })
+    return true;
 }
 
 //校验邮箱
@@ -127,11 +128,11 @@ function checkEmail() {
     //3.判断
     var flag = reg_email.test(email);
     if (flag) {
-        $("#r_password").css("border-bottom", "");
+        $("#r_email").css("border", "");
         $("#r_email").css("border-bottom", "2px solid green");
         $("#r_e_msg").html("");
     } else {
-        $("#r_email").css("border", "1px solid red");
+        $("#r_email").css("border", "2px solid red");
         $("#r_e_msg").html("请输入正确的邮箱格式");
     }
 

@@ -140,9 +140,9 @@ public class UserServlet extends HttpServlet {
                 }
                 User u = loginService.LoginUser(user);
                 if (null != u) {
-                    System.out.println("登录成功");
                     //用户是否激活
                     if ("Y".equals(u.getStatus())) {
+                        System.out.println("登陆成功");
                         //登录成功
                         User safeUser = new User(u.getUser_id(), u.getNickname(), u.getBirthday(), u.getAge(),
                                 u.getSex(), u.getCreate_user_time(), u.getUser_img(), u.getUser_ico(),u.getUser_des(),u.getPhone());

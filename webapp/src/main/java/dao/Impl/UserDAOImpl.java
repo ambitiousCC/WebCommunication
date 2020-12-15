@@ -58,7 +58,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean removeUser(Long user_id) {
-        String sql = "DELET FROM user WHERE user_id=? ";
+        String sql = "DELETE FROM user WHERE user_id=? ";
         return  template.update(sql,user_id) > 0;
     }
 
