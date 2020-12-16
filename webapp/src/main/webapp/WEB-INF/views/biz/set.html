@@ -193,6 +193,25 @@
                     </form>
                 </div>
             </div>
+            <div class="row tags-content content-block" id="change-password" style="display: none">
+                <h2 class="title"><strong>修改密码</strong></h2>
+                <div class="htmleaf-content">
+                    <form action="">
+                        <div class="form-group">
+                            <div class="controls">
+                                旧密码：<input id="oldPassword" type="password" class="effect-23 floatLabel" name="oldPassword">
+                            </div>
+                            <div class="controls">
+                                新密码：<input id="newPassword" type="password" class="effect-23 floatLabel" name="newPassword">
+                            </div>
+                            <div class="controls">
+                                确认密码：<input id="confirmPassword" type="password" class="effect-23 floatLabel" name="confirmPassword">
+                            </div>
+                            <input type="button" value="Submit" class="btn btn-lg btn-danger" style="width:100%;" id="change-password-btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <!--/内容-->
@@ -202,6 +221,7 @@
 </section>
 <div><a href="javascript:;" class="gotop" style="display:none;"></a></div>
 <!--/返回顶部-->
+<script src="../../../js/login/md5.js"></script>
 <script type="text/javascript" charset='utf-8'>
     $LAB
         .script("../../../js/cropper.js")

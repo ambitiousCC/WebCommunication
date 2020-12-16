@@ -82,6 +82,9 @@ public class UserServlet extends HttpServlet {
         else if (Objects.equals("/user/activeAccount", path)) {
             activeAccount(req, resp);
         }
+        else if (Objects.equals("/user/save/password.do",path)) {
+            changePassword(req,resp);
+        }
         else if (Objects.equals("/user/save/profile.do", path)) {
             try {
                 updateProfile(req, resp);

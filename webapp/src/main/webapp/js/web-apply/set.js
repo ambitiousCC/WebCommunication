@@ -2,6 +2,19 @@ $(function () {
     //初始化判断
     loadUse();
 });
+
+//修改密码
+$("#change-password-btn").on('click',function () {
+    //判断两次密码输入是否一致
+    var newPassword = $("#newPassword").val();
+    var confirmPassword = $("#confirmPassword").val();
+    if(newPassword!==confirmPassword) {
+        alert("两次输入的密码不一致");
+    } else {
+        changePassword(newPassword);
+    }
+});
+
 //修改个人资料
 $("#user-submit-btn").on('click',function () {
     //获得链接信息
@@ -27,6 +40,21 @@ function createDate(birthday) {
     }
     return date;
 }
+
+//修改密码
+function changePassword(password) {
+    password = md5(password);
+    $.post("/user/save/password.do", {
+        password:password
+    }, function (data) {
+        var flag = data.flag;
+        if (flag) {
+        } else {
+        }
+    });
+}
+
+//修改资料
 function changeProfile(name, des, sex, birthday, phone, address, comments) {
     $.post("/user/save/profile.do",{
         nickname:name,
@@ -64,15 +92,6 @@ function loadUse() {
                 p:"改变站点的背景:暂时没有支持该服务"
             },
             {
-                title:"您真的要关闭吗？可以推荐音乐给我们哦？",
-                id:"closeMusicBtn",
-                href:"",
-                class:"btn btn-warning",
-                attr:"disabled",
-                value:"音效",
-                p:"关闭音效，等上一条服务完成，将会补充"
-            },
-            {
                 title:"您真的要退出吗？",
                 id:"existBtn",
                 href:"/user/exist",
@@ -91,6 +110,15 @@ function loadUse() {
                 p:"修改资料：点击以后出现修改资料内容"
             },
             {
+                title:"修改密码的标签",
+                id:"changePasswordBtn",
+                href:"",
+                class:"btn btn-warning",
+                attr:"",
+                value:"修改密码",
+                p:"修改密码：修改个人账号密码"
+            },
+            {
                 title:"管理文章",
                 id:"setArticle",
                 href:"",
@@ -102,7 +130,8 @@ function loadUse() {
 
         ];
         if (data.user_id === null||undefined===data.user_id) {
-            createTags(2,val);
+            alert("请先登录");
+            location.href="/sign";
         } else {
             createTags(val.length,val,data);
             loadArts(data.user_id);
@@ -110,16 +139,40 @@ function loadUse() {
         }
     });
 }
-
+var tagNameMap = ["#set-article","#change-profile","#change-password"];
 $(document).on('click','#changeBtn',function () {
-    $("#set-article").css('display','none');
-    $("#change-profile").css('display','block');
+    var current = "#change-profile";
+    for(var i=0;i<tagNameMap.length;i++) {
+        if(tagNameMap[i]===current) {
+            $(current).css('display','block');
+        } else {
+            $(tagNameMap[i]).css('display','none');
+        }
+    }
+});
+
+$(document).on('click','#changePasswordBtn',function () {
+    var current = "#change-password";
+    for(var i=0;i<tagNameMap.length;i++) {
+        if(tagNameMap[i]===current) {
+            $(current).css('display','block');
+        } else {
+            $(tagNameMap[i]).css('display','none');
+        }
+    }
 });
 $(document).on('click', '#setArticle', function () {
-    $("#set-article").css('display','block');
-    $("#change-profile").css('display','none');
+    var current = "#set-article";
+    for(var i=0;i<tagNameMap.length;i++) {
+        if(tagNameMap[i]===current) {
+            $(current).css('display','block');
+        } else {
+            $(tagNameMap[i]).css('display','none');
+        }
+    }
 });
 
+//修改资料
 function loadImgChangFunction() {
     //做个下简易的验证  大小 格式
     $('#avatarInput').on('change', function (e) {

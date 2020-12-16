@@ -13,6 +13,7 @@ function loadUse() {
             $("#text-container").css("display","none");
             $("#text-tips").css("display","none");
             $("#text-un-tips").css("display","block");
+            location.href="/sign";
         } else {
             //登录以后才会有编辑器
             //并隐藏token值

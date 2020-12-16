@@ -109,6 +109,7 @@
         <url-pattern>/user/findUser.do</url-pattern>
         <url-pattern>/user/about/findOtherUser</url-pattern>
         <url-pattern>/user/about/arts.do</url-pattern>
+        <url-pattern>/user/save/password.do</url-pattern>
         <url-pattern>/user/save/userImg.do</url-pattern>
         <url-pattern>/user/save/profile.do</url-pattern>
         <url-pattern>/user/save/update.do</url-pattern>

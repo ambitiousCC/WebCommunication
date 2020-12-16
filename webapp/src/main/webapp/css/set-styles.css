@@ -20,6 +20,7 @@ h2.heading {
 .controls input[type="text"],
 .controls input[type="email"],
 .controls input[type="tel"],
+.controls input[type="password"],
 .controls textarea,
 .controls button,
 .controls select {
