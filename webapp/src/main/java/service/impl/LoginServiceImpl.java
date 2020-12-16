@@ -24,6 +24,7 @@ public class LoginServiceImpl implements LoginService {
      * @return
      */
     public User LoginUser(User user) {
+
         return userDAO.LoginUser(user.getUsername(), user.getPassword());
     }
 

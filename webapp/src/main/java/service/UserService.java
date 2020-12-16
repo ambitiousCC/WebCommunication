@@ -23,6 +23,13 @@ public interface UserService {
     boolean removeUser(Long user_id);
 
     /**
+     * 检查密码是否一致
+     * @param user
+     * @return
+     */
+    boolean checkPassword(User user);
+
+    /**
      * 修改密码
      * @param user 用户
      * @return

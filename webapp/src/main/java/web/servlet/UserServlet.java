@@ -72,6 +72,13 @@ public class UserServlet extends HttpServlet {
         else if (Objects.equals("/user/exist", path)) {
             exist(req, resp);
         }
+        else if (Objects.equals("/user/check.do",path)) {
+            try {
+                checkPassword(req,resp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         else if (Objects.equals("/user/findUser.do", path)) {
             System.out.println("normal");
             findOneUser(req, resp);
@@ -148,7 +155,7 @@ public class UserServlet extends HttpServlet {
                         System.out.println("登陆成功");
                         //登录成功
                         User safeUser = new User(u.getUser_id(), u.getNickname(), u.getEmail(), u.getBirthday(), u.getAge(),
-                                u.getSex(), u.getCreate_user_time(), u.getUser_img(), u.getUser_ico(),u.getUser_des(),u.getPhone());
+                                u.getSex(), u.getCreate_user_time(), u.getUser_img(), u.getUser_ico(),u.getUser_des(),u.getPhone(),u.getLast_login());
                         req.getSession().setAttribute("user", safeUser);
                         req.setAttribute("user", safeUser);
                         info.setFlag(true);
@@ -241,6 +248,14 @@ public class UserServlet extends HttpServlet {
         //设置回流的数据类型
         resp.setContentType("application/json;charset=utf-8");
         resp.getWriter().write(json);
+    }
+
+    private void checkPassword(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        User user = (User)req.getSession().getAttribute("user");
+        String password = req.getParameter("password");
+        user.setPassword(Md5Util.encodeByMd5(password));
+        boolean flag = userService.checkPassword(user);
+        WriteUitl.writeValue(flag,resp);
     }
 
     /**

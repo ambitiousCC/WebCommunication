@@ -5,6 +5,13 @@ $(function () {
 
 //修改密码
 $("#change-password-btn").on('click',function () {
+    var oldPassword = $("#oldPassword").val();
+    var flag = false;
+    flag = isUser(oldPassword);
+    if(!flag) {
+        alert("原密码错误");
+    }
+
     //判断两次密码输入是否一致
     var newPassword = $("#newPassword").val();
     var confirmPassword = $("#confirmPassword").val();
@@ -43,6 +50,16 @@ function createDate(birthday) {
         date = year + "-" + month + "-" + day;
     }
     return date;
+}
+
+//校验原密码
+function isUser(password) {
+    password = md5(password);
+    $.post("/user/check.do", {
+        password:password
+    }, function (data) {
+        return data;
+    });
 }
 
 //修改密码

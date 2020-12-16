@@ -7,7 +7,6 @@ import beans.User;
 import dao.Impl.UserDAOImpl;
 import dao.UserDAO;
 import service.UserService;
-import web.utils.DESUtil;
 import web.utils.MailUtils;
 import web.utils.UuidUtil;
 
@@ -41,6 +40,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean removeUser(Long user_id) {
         return userDAO.removeUser(user_id);
+    }
+
+    @Override
+    public boolean checkPassword(User user) {
+        user.setLast_login(new Date());
+        return userDAO.checkPassword(user);
     }
 
     @Override

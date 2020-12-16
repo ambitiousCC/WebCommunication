@@ -21,6 +21,7 @@ public class User implements Serializable {
     private String user_ico;
     private String user_des;
     private String user_comments;
+    private Date last_login;
 
     public User() {}
 
@@ -44,6 +45,7 @@ public class User implements Serializable {
                 ", user_ico='" + user_ico + '\'' +
                 ", user_des='" + user_des + '\'' +
                 ", user_comments='" + user_comments + '\'' +
+                ", last_login=" + last_login +
                 '}';
     }
 
@@ -183,7 +185,11 @@ public class User implements Serializable {
         this.user_comments = user_comments;
     }
 
-    public User(Long user_id, String nickname, String email, Date birthday, int age, String sex, Date create_user_time, String user_img, String user_ico, String user_des, String phone) {
+    public Date getLast_login() { return last_login; }
+
+    public void setLast_login(Date last_login) { this.last_login = last_login; }
+
+    public User(Long user_id, String nickname, String email, Date birthday, int age, String sex, Date create_user_time, String user_img, String user_ico, String user_des, String phone, Date last_login) {
         this.user_id = user_id;
         this.nickname = nickname;
         this.email = email;
@@ -195,9 +201,10 @@ public class User implements Serializable {
         this.user_ico = user_ico;
         this.user_des = user_des;
         this.phone = phone;
+        this.last_login = last_login;
     }
 
-    public User(Long user_id, String username, String password, String nickname, Date birthday, int age, String phone, String address, String email, String sex, Date create_user_time, String status, String code, String user_img, String user_ico, String user_des, String user_comments) {
+    public User(Long user_id, String username, String password, String nickname, Date birthday, int age, String phone, String address, String email, String sex, Date create_user_time, String status, String code, String user_img, String user_ico, String user_des, String user_comments, Date last_login) {
         this.user_id = user_id;
         this.username = username;
         this.password = password;
@@ -215,5 +222,6 @@ public class User implements Serializable {
         this.user_ico = user_ico;
         this.user_des = user_des;
         this.user_comments = user_comments;
+        this.last_login = last_login;
     }
 }

@@ -10,6 +10,7 @@ import web.utils.JDBCUtilsPlus;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -55,7 +56,13 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public boolean removeUser(Long user_id) {
         String sql = "DELETE FROM user WHERE user_id=? ";
-        return  template.update(sql,user_id) > 0;
+        return template.update(sql,user_id) > 0;
+    }
+
+    @Override
+    public boolean checkPassword(User user) {
+        String sql = "UPDATE user SET last_login=? WHERE user_id=? AND password=? ";
+        return template.update(sql,new Timestamp(user.getLast_login().getTime()),user.getUser_id(),user.getPassword())>0;
     }
 
     @Override
@@ -192,7 +199,6 @@ public class UserDAOImpl implements UserDAO {
      */
     @Override
     public User LoginUser(String username,String password) {
-        System.out.println(password);
         User user = null;
         Connection conn = null;
         PreparedStatement pstmt = null;
@@ -206,6 +212,7 @@ public class UserDAOImpl implements UserDAO {
             while (rs.next()) {
                 if (Objects.equals(password,rs.getString("password"))) {
                     user = getUser(rs);
+                    setLoginTime(user.getUser_id());
                     return user;
                 }
             }
@@ -221,6 +228,11 @@ public class UserDAOImpl implements UserDAO {
         } finally {
             JDBCUtils.release(conn,pstmt,rs);
         }
+    }
+
+    private void setLoginTime(Long user_id) {
+        String sql = "UPDATE user SET last_login=? WHERE user_id=? ";
+        template.update(sql,new Timestamp(new Date().getTime()),user_id);
     }
 
     public User getUser(ResultSet rs) throws SQLException {
@@ -241,7 +253,8 @@ public class UserDAOImpl implements UserDAO {
                 rs.getString("user_img"),
                 rs.getString("user_ico"),
                 rs.getString("user_des"),
-                rs.getString("user_comments"));
+                rs.getString("user_comments"),
+                rs.getTimestamp("last_login"));
         return user;
     }
 
