@@ -43,6 +43,12 @@ public class UserServiceImpl implements UserService {
         return userDAO.removeUser(user_id);
     }
 
+    @Override
+    public boolean changePassword(User user) {
+        //在这里修改右键
+        return userDAO.changePassword(user);
+    }
+
     /**
      * 注册功能完成
      * @param user

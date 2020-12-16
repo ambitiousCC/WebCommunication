@@ -8,9 +8,13 @@ $("#change-password-btn").on('click',function () {
     //判断两次密码输入是否一致
     var newPassword = $("#newPassword").val();
     var confirmPassword = $("#confirmPassword").val();
-    if(newPassword!==confirmPassword) {
+    if(newPassword==="" || confirmPassword==="") {
+        alert("未输入完全")
+    }
+    else if (newPassword!==confirmPassword) {
         alert("两次输入的密码不一致");
-    } else {
+    }
+    else {
         changePassword(newPassword);
     }
 });
@@ -47,9 +51,11 @@ function changePassword(password) {
     $.post("/user/save/password.do", {
         password:password
     }, function (data) {
-        var flag = data.flag;
-        if (flag) {
+        if (data) {
+            alert("修改成功");
+            location.href="/sign";
         } else {
+            alert("网络异常，修改失败");
         }
     });
 }

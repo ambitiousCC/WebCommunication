@@ -183,9 +183,10 @@ public class User implements Serializable {
         this.user_comments = user_comments;
     }
 
-    public User(Long user_id, String nickname, Date birthday, int age, String sex, Date create_user_time, String user_img, String user_ico, String user_des, String phone) {
+    public User(Long user_id, String nickname, String email, Date birthday, int age, String sex, Date create_user_time, String user_img, String user_ico, String user_des, String phone) {
         this.user_id = user_id;
         this.nickname = nickname;
+        this.email = email;
         this.birthday = birthday;
         this.age = age;
         this.sex = sex;

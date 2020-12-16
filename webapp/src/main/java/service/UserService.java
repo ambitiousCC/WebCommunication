@@ -10,17 +10,24 @@ public interface UserService {
 
     /**
      * 传入别人的user_id
-     * @param user_id
-     * @return
+     * @param user_id 用户id
+     * @return 用户对象
      */
     User findOtherUser(Long user_id);
 
     /**
      * 注销用户
-     * @param user_id
-     * @return
+     * @param user_id 用户对象
+     * @return 判断是否成功
      */
     boolean removeUser(Long user_id);
+
+    /**
+     * 修改密码
+     * @param user 用户
+     * @return
+     */
+    boolean changePassword(User user);
 
     /**
      * 传入登录的user,判断是否登录成功--登录查询

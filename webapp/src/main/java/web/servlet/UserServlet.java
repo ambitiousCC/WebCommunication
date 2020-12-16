@@ -83,7 +83,11 @@ public class UserServlet extends HttpServlet {
             activeAccount(req, resp);
         }
         else if (Objects.equals("/user/save/password.do",path)) {
-            changePassword(req,resp);
+            try {
+                changePassword(req,resp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         else if (Objects.equals("/user/save/profile.do", path)) {
             try {
@@ -100,7 +104,7 @@ public class UserServlet extends HttpServlet {
             req.getSession().invalidate();
             //重定向
             resp.sendRedirect("/sign");
-        } else if (Objects.equals("/user/about/saveComment.do", path)) {
+        } else if (Objects.equals("/user/about/saveComment.do", path)) { //待完成前端
             saveMsg(req, resp);
         } else if (Objects.equals("/user/about/arts.do",path)) {
             setUserArts(req,resp);
@@ -113,12 +117,8 @@ public class UserServlet extends HttpServlet {
 
     /**
      * 登录
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
      */
-    private void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    private void login(HttpServletRequest req, HttpServletResponse resp) throws IOException {
             //1获取用户名和密码
             Map<String,String[]> map = req.getParameterMap();
             //2封装
@@ -147,7 +147,7 @@ public class UserServlet extends HttpServlet {
                     if ("Y".equals(u.getStatus())) {
                         System.out.println("登陆成功");
                         //登录成功
-                        User safeUser = new User(u.getUser_id(), u.getNickname(), u.getBirthday(), u.getAge(),
+                        User safeUser = new User(u.getUser_id(), u.getNickname(), u.getEmail(), u.getBirthday(), u.getAge(),
                                 u.getSex(), u.getCreate_user_time(), u.getUser_img(), u.getUser_ico(),u.getUser_des(),u.getPhone());
                         req.getSession().setAttribute("user", safeUser);
                         req.setAttribute("user", safeUser);
@@ -183,10 +183,6 @@ public class UserServlet extends HttpServlet {
 
     /**
      * 注册
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
      */
     private void regist(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         //1获取前台用户输入信息
@@ -201,8 +197,6 @@ public class UserServlet extends HttpServlet {
         }
         //md5二次加密
         try {
-            System.out.println("注册时获取到的一次加密密码"+user.getPassword());
-            System.out.println("注册时获取到的二次加密密码"+Md5Util.encodeByMd5(user.getPassword()));
             user.setPassword(Md5Util.encodeByMd5(user.getPassword()));
         } catch (Exception e) {
             System.out.println("紧急！加密方法失效");
@@ -210,7 +204,7 @@ public class UserServlet extends HttpServlet {
         }
         //3调用完成注册
         //序列化JSON数据
-        String json = null;
+        String json;
         ResultInfo info = new ResultInfo();
         //先判断邮箱地址
         boolean flagEmail = userService.isEmptyUserFindByEmail(user.getEmail());
@@ -232,19 +226,17 @@ public class UserServlet extends HttpServlet {
                     info.setFlag(false);
                     info.setErrorMsg("注册失败");
                 }
-                json = mapper.writeValueAsString(info);
             } else {
                 //判断用户名
                 info.setFlag(false);
                 info.setErrorMsg("该用户名已经被注册");
-                json = mapper.writeValueAsString(info);
             }
         } else {
             //判断邮箱
             info.setFlag(false);
             info.setErrorMsg("邮箱已被注册或未激活");
-            json = mapper.writeValueAsString(info);
         }
+        json = mapper.writeValueAsString(info);
 
         //设置回流的数据类型
         resp.setContentType("application/json;charset=utf-8");
@@ -252,11 +244,18 @@ public class UserServlet extends HttpServlet {
     }
 
     /**
+     * 修改密码
+     */
+    private void changePassword(HttpServletRequest req, HttpServletResponse resp) throws  Exception {
+        User user = (User)req.getSession().getAttribute("user");
+        String password = req.getParameter("password");
+        user.setPassword(Md5Util.encodeByMd5(password));
+        System.out.println(user.toString());
+        boolean flag = userService.changePassword(user);
+        WriteUitl.writeValue(flag,resp);
+    }
+    /**
      * 退出
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
      */
     private void exist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             //销毁
@@ -267,10 +266,6 @@ public class UserServlet extends HttpServlet {
 
     /**
      * 注销
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
      */
     private void removeUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -278,10 +273,6 @@ public class UserServlet extends HttpServlet {
 
     /**
      * 查找一个用户
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
      */
     private void findOneUser(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //从session中获取登录用户
@@ -332,10 +323,6 @@ public class UserServlet extends HttpServlet {
     }
     /**
      * 激活账户
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
      */
     private void activeAccount(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取激活码
@@ -445,8 +432,7 @@ public class UserServlet extends HttpServlet {
 
     /**
      * 这里本来想做一个给用户留言的控制器，但是觉得不好，就暂时放下了
-     * @param req
-     * @param resp
+     * 给用户留言的控制器，待完成
      */
     private void saveMsg(HttpServletRequest req, HttpServletResponse resp) {
         //获取用户id
@@ -458,7 +444,7 @@ public class UserServlet extends HttpServlet {
         }
 
         User user = (User) req.getSession().getAttribute("user");
-        if (null == null) {
+        if (user == null) {
             return ;
         }
 
@@ -469,11 +455,8 @@ public class UserServlet extends HttpServlet {
 
     /**
      * 查找所有文章
-     * @param req
-     * @param resp
-     * @return
      */
-    private boolean setUserArts(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    private void setUserArts(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //获取该用户的id
         String user_idStr = req.getParameter("user_id");
         //数据转换
@@ -488,17 +471,14 @@ public class UserServlet extends HttpServlet {
         List<Article> setArtList = userService.findAllUserArts(user_id);
         System.out.println(setArtList);
         art.setArticles(setArtList);
-        Map msg = new HashMap();
+        Map<String, String> msg = new HashMap<>();
         msg.put("flag","error");
         msg.put("msg","无内容");
-        if(art!=null && setArtList.size()>0) {
+        if(setArtList.size() > 0) {
             WriteUitl.writeValue(art, resp);
-            return true;
-        } else if (setArtList.size()==0){
+        } else {
             WriteUitl.writeValue(msg,resp);
-            return true;
         }
-        return false;
     }
 }
 

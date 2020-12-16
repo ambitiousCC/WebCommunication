@@ -1,21 +1,17 @@
 package dao.Impl;
 
 import beans.Article;
-import beans.SetArt;
 import beans.User;
 import dao.UserDAO;
-import jdk.nashorn.internal.scripts.JD;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import web.utils.JDBCUtils;
 import web.utils.JDBCUtilsPlus;
-import web.utils.isEmptyStr;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * 对用户数据库进行操作的类
@@ -60,6 +56,13 @@ public class UserDAOImpl implements UserDAO {
     public boolean removeUser(Long user_id) {
         String sql = "DELETE FROM user WHERE user_id=? ";
         return  template.update(sql,user_id) > 0;
+    }
+
+    @Override
+    public boolean changePassword(User user) {
+        String sql = "UPDATE user SET password=? WHERE user_id=? ";
+
+        return template.update(sql, user.getUser_id(),user.getPassword())>0;
     }
 
     /**
@@ -340,7 +343,7 @@ public class UserDAOImpl implements UserDAO {
         //拼接语句
         StringBuilder sB = new StringBuilder(sql);
 
-        List params = new ArrayList();
+        List<java.io.Serializable> params = new ArrayList<java.io.Serializable>();
         //判断是否有值
         if (null != user.getNickname()) {
             sB.append(" nickname=? ");

@@ -15,7 +15,18 @@ public interface UserDAO {
      */
     boolean addUser(User user);
 
+    /**
+     * 注销用户
+     * @param user_id
+     * @return
+     */
     boolean removeUser(Long user_id);
+
+    /**
+     * 修改密码
+     * @return
+     */
+    boolean changePassword(User user);
 
     /**
      * 判断用户是否存在
