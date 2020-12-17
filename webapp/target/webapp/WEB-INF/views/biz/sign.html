@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>登录注册页面</title>
-    <link href="../../../css/Sign.css" rel="stylesheet"/>
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/sign.css" rel="stylesheet"/>
 </head>
 <body onload="startClock()" onunload="stopClock()">
 <div class="htmleaf-container">
@@ -30,7 +31,7 @@
                     <input type="text" placeholder="电子邮件" id="r_email" name="email"/>
                 </label>
                 <p id="r_e_msg" style="color: red;"></p>
-                <input type="button" id="create" value="创建账户"/>
+                <button id="create" type="submit" data-loading-text="Loading..." class="btn" autocomplete="off">创建账户</button>
                 <p >请阅读我们的<a style="color: #1E9FFF;" id="regist-msg">《服务条款》</a></p>
                 <p id="regist_errorMsg" style="color:red;"></p>
                 <p class="message">已经有了一个账户? <a href="#">立刻登录</a></p>
@@ -42,22 +43,21 @@
                 <label>
                     <input type="password" placeholder="密码" id="password" name="password"/>
                 </label>
-                <button id="login" type="submit">登　录</button>
+                <button id="login" type="submit" data-loading-text="Loading..." class="btn" autocomplete="off">登　录</button>
                 <p id="login_errorMsg" style="color:red;"></p>
                 <p class="message">还没有账户?
                     <a href="#">立刻创建</a>!(✪ω✪)
                     <a id="loginFrom-view">游客模式</a><br>
                     !!!∑(ﾟДﾟノ)ノ
-                    <a id="forget-password">忘记密码</a>
+                    <a id="forget-password" href="/forget">忘记密码</a>
                 </p>
             </form>
         </div>
     </div>
 </div>
 <script src="../../../js/jquery-3.4.1.min.js"></script>
+<script src="../../../js/500/bootstrap.min.js"></script>
 <script src="../../../js/layer/layer.js"></script>
-<!--<script src="../../../js/aes.js"></script>-->
-<!--<script src="../../../js/pad-zeropadding-min.js"></script>-->
 <script src="../../../js/login/md5.js"></script>
 <script src="../../../js/login/login.js" charset='utf-8'></script>
 <script type="text/javascript" charset='utf-8'>

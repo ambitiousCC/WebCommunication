@@ -3,6 +3,7 @@ package dao.Impl;
 import beans.Article;
 import beans.User;
 import dao.UserDAO;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import web.utils.JDBCUtils;
@@ -61,15 +62,22 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean checkPassword(User user) {
-        String sql = "UPDATE user SET last_login=? WHERE user_id=? AND password=? ";
-        return template.update(sql,new Timestamp(user.getLast_login().getTime()),user.getUser_id(),user.getPassword())>0;
+        String sql = "SELECT user_id FROM user WHERE user_id=? AND password=? ";
+        Long end = null;
+        try {
+            end = template.queryForObject(sql,Long.class,user.getUser_id(),user.getPassword());
+        } catch (DataAccessException e) {
+            SQLException exception = (SQLException)e.getCause();
+            System.out.println(exception);
+        }
+        return end!=null;
     }
 
     @Override
     public boolean changePassword(User user) {
         String sql = "UPDATE user SET password=? WHERE user_id=? ";
 
-        return template.update(sql, user.getUser_id(),user.getPassword())>0;
+        return template.update(sql, user.getPassword(), user.getUser_id())>0;
     }
 
     /**

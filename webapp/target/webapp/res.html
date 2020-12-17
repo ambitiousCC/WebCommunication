@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<!--    引入css文件请加上rel属性否则无效-->
+    <link href="css/res.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+<!-- 评论区 -->
+<ul id="pn">
+    <!-- 这里可以用一个图标 -->
+    <!-- 思路是点击关闭传送到数据库存储？ -->
+    <li class="list">
+        <!-- 主评论人的信息 -->
+        <!-- 头像统统是500*500的格式 -->
+        <div class="head" id="comment-user-ico"><!--<img src="images/icon/icon_500x500.png" alt="">--></div>
+        <div class="content">
+            <!-- 主评论：点击查看回复以后就是从之前的文章中做到查询 -->
+            <p class="text">
+                <span class="user name" id="comment-username"><!--名山小奏--></span>
+            <p id="comment-text">
+<!--            对于我个人来说，青春绝不会停留在高中阶段，但是过去的时光已经无法挽回。自己曾经做过的，有的后悔，有的珍贵，最大的遗憾的莫过于错过了很多优秀的人。-->
+<!--            希望每个人都是自己的大老师，做出的选择是自己的意愿，不会为之后悔-->
+            </p>
+        </div>
+        <div class="good">
+                <span class="date" id="comment-time"><!--02-14 23:01--></span>
+                <a class="dzan" href="javascript:;" id="commentsCM-Zan"></a></div>
+        <!-- 这里也是，在插入的时候一定要同时插入数字和属性值 -->
+        <div class="people" total="0" id="comment-zanNums"></div>
+            <!-- 子评论列表：这里是后端向前端插入数据的地方 -->
+        <div class="comment-list" id="comments">
+            <div class="comment" user="self">
+                    <div class="comment-left">
+                        <img src="images/icon/icon_500x500.png" alt="">
+                    </div>
+                    <div class="comment-right">
+                        <div class="comment-text"><span class="user name comment-name"><!--名山小奏--></span>
+                            <p class="comment-text"><!--每个人的生活都有自己的过法，在自己的世界中活着，亦或相信。--></p>
+                        </div>
+                        <div class="comment-date">
+                            <span class="comment-time" style="float:left;">02-14 22:00</span>
+                            <span class="comment-fun" style="float:right">
+                                    <!-- 这个赞遍历的时候插入括号和数字 -->
+                                    <a class="comment-zan" href="javascript:;" total="1" my="1"><!--取消赞(1)--></a>
+                                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                    <a class="comment-dele" href="javascript:;"><span class="jd-comment"></span></a>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            <div class="comment" user="self">
+                <div class="comment-left">
+                    <img src="images/icon/icon_500x500.png" alt="">
+                </div>
+                <div class="comment-right">
+                    <div class="comment-text"><span class="user name comment-name"><!--名山小奏--></span>
+                        <p class="comment-text"><!--无论最后的结局是什么，都不是我们抱怨的对象--></p>
+                    </div>
+                    <div class="comment-date">
+                        <span class="comment-time" style="float:left;"><!--2019-8-1 16:52:58--></span>
+                        <span class="comment-fun" style="float:right">
+                                    <!-- 这个赞遍历的时候插入括号和数字 -->
+                                    <a class="comment-zan" href="javascript:;" total="1" my="1"><!--取消赞(1)--></a>
+                                    <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                                    <a class="comment-dele" href="javascript:;"><span class="jd-comment"></span></a>
+                                </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!--回复框隔离-->
+        <div class="hf">
+            <div class="reviewArea clearfix">
+                <textarea class="hf-text" placeholder="Please enter a comment&hellip;" maxlength="100"></textarea>
+                <input type="button" class="hf-btn" value="回复" id="comment-btn">
+                <span id="textCount"></span>
+            </div>
+        </div>
+    </li>
+</ul>
+<!--这里会有查询操作-->
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/layer/layer.js"></script>
+<script src="js/recommend/res.js"></script>
+</body>
+</html>

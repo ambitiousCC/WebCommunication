@@ -26,7 +26,7 @@ public class DispatcherServlet extends HttpServlet {
         if (Objects.equals("/index", path)) {
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         } else if (Objects.equals("/sign", path)) {
-            req.getRequestDispatcher("/WEB-INF/views/biz/Sign.html").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/views/biz/sign.html").forward(req, resp);
         }
 //        首页index.html
         else if (Objects.equals("/main", path)) {
@@ -67,6 +67,9 @@ public class DispatcherServlet extends HttpServlet {
 //        钟表
         else if (Objects.equals("/clock", path)) {
             req.getRequestDispatcher("/WEB-INF/views/biz/clock.html").forward(req, resp);
+        }
+        else if (Objects.equals("/forget",path)) {
+            req.getRequestDispatcher("/WEB-INF/views/biz/forgot.html").forward(req, resp);
         }
 //        404 话说500咋整
         else {

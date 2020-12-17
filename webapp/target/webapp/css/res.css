@@ -1,0 +1,270 @@
+textarea {
+    border: 1px solid #c6c8ce;
+    width: 100%;
+    -webkit-appearance: none;
+    background: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-box-shadow: 0 0 8px rgba(182, 195, 214, .6) inset, 0 1px 1px #fff;
+    -moz-box-shadow: 0 0 8px rgba(182, 195, 214, .6) inset, 0 1px 1px #fff;
+    box-shadow: 0 0 8px rgba(182, 195, 214, .6) inset, 0 1px 1px #fff;
+    -webkit-transition-duration: 300ms;
+    -moz-transition-duration: 300ms;
+    -o-transition-duration: 300ms;
+    -ms-transition-duration: 300ms;
+    transition-duration: 300ms;
+    -webkit-transition-easing: ease-in-out;
+    -moz-transition-easing: ease-in-out;
+    -o-transition-easing: ease-in-out;
+    -ms-transition-easing: ease-in-out;
+    transition-easing: ease-in-out;
+    -webkit-transition-property: border-color, -webkit-box-shadow;
+    -webkit-transition-property: border-color, box-shadow;
+    -moz-transition-property: border-color, -moz-box-shadow;
+    -moz-transition-property: border-color, box-shadow;
+    -o-transition-property: border-color, box-shadow;
+    -ms-transition-property: border-color, box-shadow;
+    transition-property: border-color, box-shadow;
+
+}
+
+body {
+    color: #333;
+    width: auto;
+    padding: 10px 0;
+    font-size: 14px;
+    background: #fff;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+#pn {
+    padding: 0;
+    word-wrap: break-word;
+    width: 480px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.list {
+    position: absolute;
+    border-top: 1px solid #eee;
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+    border-top: 1px solid #eee;
+}
+
+.head {
+    width: 50px;
+    float: left;
+}
+
+.head img {
+    width: 50px;
+    height: 50px;
+}
+
+.close {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #696e78;
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.close:hover {
+    color: #eb7350;
+}
+
+.content {
+    width: 80%;
+    line-height: 20px;
+    font-size: 16px;
+    margin-left: 70px;
+}
+
+.name {
+    color: rgb(7, 124, 219);
+}
+
+.comment-text {
+    margin-left: 20px;
+}
+
+.pic {
+    margin: 5px 0;
+}
+
+.good:after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+/* 缩放比例 */
+.good {
+    *zoom: 1;
+}
+
+.date {
+    float: left;
+    color: #808080;
+}
+
+.good a {
+    float: right;
+    color: #808080;
+}
+
+.people {
+    background: #F7F7F7;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 10px;
+    margin: 5px 0;
+}
+
+.comment:after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.comment {
+    *zoom: 1;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+}
+
+.comment-left {
+    width: 30px;
+    float: left;
+    margin-right: 10px;
+}
+
+.comment-left img {
+    width: 30px;
+    height: 30px;
+}
+
+.comment-right {
+    width: 100%;
+}
+
+.comment-text {
+    line-height: 18px;
+}
+
+.comment-date {
+    font-size: 12px;
+    line-height: 14px;
+    color: #ccc;
+    position: relative;
+}
+
+.comment-zan {
+    right: 40px;
+    bottom: 0;
+    color: #808080;
+}
+
+.comment-dele {
+    right: 0;
+    bottom: 0;
+    color: #808080;
+}
+
+.hf:after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.hf {
+    *zoom: 1;
+}
+
+.hf-text {
+    float: left;
+    border: 1px solid #eee;
+    display: block;
+    width: 80%;
+    padding: 5px;
+    resize: none;
+    color: #ccc;
+    font-size: 16px;
+}
+
+.hf-on .hf-text {
+    font-size: 16px;
+    color: #333;
+    border: 1px solid #008CBA;
+}
+
+.hf-btn:hover {
+    cursor: pointer;
+    color: #ffffff;
+    background: #045abb;
+    text-decoration: none;
+}
+
+
+.hf-btn {
+    border-radius: 20px;
+    background-color: #008CBA;
+    /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    width: 15%;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 6px;
+    float: right;
+    /* display: none; */
+}
+
+.hf-nub {
+    float: left;
+    font-size: 16px;
+    padding: 3px 5px;
+    color: #666;
+    /* display: none; */
+}
+
+.hf-on .hf-btn {
+    display: inline;
+}
+
+.hf-on .hf-nub {
+    display: inline;
+}
+
+#textCount {
+    float: left;
+    color: red;
+    font-size: 16px;
+    font-weight: 600;
+}
