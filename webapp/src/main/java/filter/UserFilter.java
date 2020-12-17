@@ -1,8 +1,10 @@
 package filter;
 
 import beans.User;
+import beans.Visitor;
 import dao.Impl.UserDAOImpl;
 import dao.UserDAO;
+import web.utils.AddressUtils;
 import web.utils.getClientIp;
 
 import javax.servlet.*;
@@ -17,7 +19,10 @@ public class UserFilter implements Filter {
     private static String RedirectPath;
     private static String hostname;
     private static String IP;
-
+    private static String browser;
+    private static String browserVersion;
+    private static String OS;
+    private static String address;
 
     @Override
     public void init(FilterConfig filterConfig) {
@@ -32,6 +37,10 @@ public class UserFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         IP = getClientIp.getIpaddr((HttpServletRequest)request);//拓展：异地登录
+        browser = getClientIp.getBrowserName((HttpServletRequest)request);
+        browserVersion = getClientIp.getBrowserVersion((HttpServletRequest)request);
+        OS = getClientIp.getOsName((HttpServletRequest)request);
+        address = AddressUtils.getAddress(IP);
         //指定操作必须判断是否登录
         //1`从session中获取user值
         User user = (User) ((HttpServletRequest) request).getSession().getAttribute("user");
@@ -45,16 +54,24 @@ public class UserFilter implements Filter {
                 //直接执行
                 chain.doFilter(request, response);
             } else {
-                System.out.println(IP + "尝试强行访问API");
+                printDetails(IP,browser,browserVersion,OS,address);
                 //重定向到登录页面：前段从后台发送的重定向页面
                 ((HttpServletResponse)response).sendRedirect(RedirectPath);
             }
         } else {
-            System.out.println(IP + "尝试强行访问API");
+            printDetails(IP,browser,browserVersion,OS,address);
             System.out.println("http://"+hostname+RedirectPath);
             //重定向到登录页面：前段从后台发送的重定向页面
 
             ((HttpServletResponse)response).sendRedirect("http://"+hostname+RedirectPath);
         }
     }
+    public void printDetails(String IP, String browser, String browserVersion, String OS, String address) {
+        System.out.println(IP + "尝试强行访问API");
+        System.out.println("浏览器:"+browser);
+        System.out.println("浏览器版本:"+browserVersion);
+        System.out.println("操作系统:"+OS);
+        System.out.println(address);
+    }
+
 }

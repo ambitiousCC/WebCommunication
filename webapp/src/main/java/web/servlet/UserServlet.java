@@ -42,6 +42,11 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().setAttribute("visitor", new Visitor(getClientIp.getIpaddr(req),
+                getClientIp.getBrowserName(req),
+                getClientIp.getBrowserVersion(req),
+                getClientIp.getOsName(req),
+                AddressUtils.getAddress(getClientIp.getIpaddr(req))));
 //        String path = req.getRequestURI();
 //        System.out.println(path);
 //        String params = path.substring(path.indexOf("/",1)+1,path.length());
@@ -57,7 +62,6 @@ public class UserServlet extends HttpServlet {
 //        System.out.println(out);
 //        path = "/user/"+out;
         String path = req.getServletPath();
-
 
         if (Objects.equals("/user/login", path)) {
             login(req, resp);
@@ -88,6 +92,10 @@ public class UserServlet extends HttpServlet {
         }
         else if (Objects.equals("/user/activeAccount", path)) {
             activeAccount(req, resp);
+        }
+        else if (Objects.equals("/user/sendEmail",path)) {
+            System.out.println("a");
+            sendEmail(req,resp);
         }
         else if (Objects.equals("/user/save/password.do",path)) {
             try {
@@ -120,6 +128,26 @@ public class UserServlet extends HttpServlet {
         else {
             req.getRequestDispatcher("/WEB-INF/views/error/404.jsp").forward(req, resp);
         }
+    }
+
+    private void sendEmail(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        System.out.println("b");
+        Visitor visitor = (Visitor) req.getSession().getAttribute("visitor");
+        System.out.println("visitor:"+visitor.toString());
+//        String email = req.getParameter("email");
+//        //通过邮箱查找是否注册成功
+//        boolean flag = userService.isEmptyUserFindByEmail(email);
+//        if(!flag) {
+//            WriteUitl.writeValue(flag,resp);
+//            return ;
+//        }
+//        //查找激活码
+//        String code;
+//
+//        //发送带有激活码的邮件
+//
+//        //然后重新弄一个处理器处理修改密码的
+
     }
 
     /**

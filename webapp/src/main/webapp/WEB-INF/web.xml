@@ -105,6 +105,7 @@
         <url-pattern>/user/login</url-pattern>
         <url-pattern>/user/regist</url-pattern>
         <url-pattern>/user/exist</url-pattern>
+        <url-pattern>/user/sendEmail</url-pattern>
         <url-pattern>/user/check.do</url-pattern>
         <url-pattern>/user/activeAccount</url-pattern>
         <url-pattern>/user/findUser.do</url-pattern>

@@ -1,4 +1,4 @@
-$(function () {
+$("#reset-email").on('click',function () {
     //获取输入邮箱，正则表达筛选
     var email = $("#reEmail").val();
     if(checkEmail()) {
@@ -18,4 +18,11 @@ function checkEmail() {
         alert("输入格式不正确");
     }
     return flag;
+}
+
+function sendtemp(email) {
+    $.post("/user/sendEmail",{
+        email:email,
+    },function (data) {
+    });
 }

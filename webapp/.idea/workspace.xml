@@ -49,16 +49,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b2e6fc2-d714-4d22-906a-c8e40a129545" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/admin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/web-apply/forgot.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/beans/Visitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/web/utils/AddressUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/web-apply/forget.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/content.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/content.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/filter/UserFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/filter/UserFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/servlet/UserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/servlet/UserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web/utils/getClientIp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web/utils/getClientIp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/about.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/forgot.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/forgot.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/sb-admin-2.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/forum.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/forum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/friend.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/friend.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/globe.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/globe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/readWall.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/readWall.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/set.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/set.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/web-apply/forgot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/filter/UserFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/filter/UserFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/web/servlet/UserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web/servlet/UserServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/web/utils/getClientIp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web/utils/getClientIp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/classes/filter/UserFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/classes/filter/UserFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/classes/web/servlet/UserServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/classes/web/servlet/UserServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/classes/web/utils/getClientIp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/classes/web/utils/getClientIp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/forgot.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/forgot.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/forum.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/forum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/friend.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/friend.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/globe.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/globe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/readWall.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/readWall.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/set.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/views/biz/set.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/webapp/js/web-apply/forgot.js" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,88 +108,6 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-968" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://S:/apache-maven-3.5.4/repo/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar!/com/mysql/cj/jdbc/AbandonedConnectionCleanupThread.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/ConnectionUtils.c3p0.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="57" lean-forward="true" selection-start-line="1" selection-start-column="57" selection-end-line="1" selection-end-column="57" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/druid.properties">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="41" column="33" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/UserDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="22" column="22" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/Impl/UserDAOImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="58" column="36" lean-forward="true" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
-              <folding>
-                <element signature="method#addUser#0;class#UserDAOImpl#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/utils/WriteUitl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/web/utils/UuidUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -173,35 +118,10 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>changePassword</find>
-      <find>image</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="PUSH_TAGS">
       <GitPushTagMode />
-    </option>
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/dao/Impl/UserDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/login/login.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/web-apply/set.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/500/bootstrap.min.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/forgot-password.html" />
-        <option value="$PROJECT_DIR$/src/main/java/web/servlet/DispatcherServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/Sign.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/sb-admin-2.min.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/css/admin.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/forgot.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/web-apply/forgot.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/content.html" />
-      </list>
     </option>
   </component>
   <component name="LogFilters">
@@ -226,17 +146,6 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="webapp Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
-  </component>
   <component name="MavenRunner">
     <option name="jreName" value="1.8" />
   </component>
@@ -247,93 +156,8 @@
     <option name="height" value="1068" />
   </component>
   <component name="ProjectId" id="1OdKxGdGSSIk8gYlb9qLWDiurgk" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="beans" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="webapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="error" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -345,7 +169,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -355,10 +179,10 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.5850575" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -376,19 +200,20 @@
       <recent name="D:\JavaWeb-workspace\webapp\src\main\webapp\images" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager" selected="Tomcat Server.Server">
+    <configuration name="AddressUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="web.utils.AddressUtils" />
+      <module name="webapp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="web.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AesEncryptUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="web.utils.AesEncryptUtil" />
       <module name="webapp" />
@@ -441,20 +266,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UuidUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="web.utils.UuidUtil" />
-      <module name="webapp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="web.utils.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Server" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8">
+      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="webapp:war exploded">
@@ -530,18 +343,18 @@
     <list>
       <item itemvalue="Application.EncodingUtils" />
       <item itemvalue="Application.MailUtils" />
-      <item itemvalue="Application.UuidUtil" />
       <item itemvalue="Application.DESUtil" />
       <item itemvalue="Application.AesEncryptUtil" />
       <item itemvalue="Tomcat Server.Server" />
+      <item itemvalue="Application.AddressUtils" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AddressUtils" />
         <item itemvalue="Application.AesEncryptUtil" />
         <item itemvalue="Application.DESUtil" />
         <item itemvalue="Application.MailUtils" />
         <item itemvalue="Application.EncodingUtils" />
-        <item itemvalue="Application.UuidUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -549,7 +362,7 @@
     <option name="viewStates">
       <list>
         <serviceView>
-          <option name="contentProportion" value="0.08246073" />
+          <option name="contentProportion" value="0.017316017" />
           <treeState>
             <expand>
               <path>
@@ -568,7 +381,7 @@
       </list>
     </option>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -654,6 +467,8 @@
       <workItem from="1608130967729" duration="3826000" />
       <workItem from="1608163484828" duration="4594000" />
       <workItem from="1608181879670" duration="3630000" />
+      <workItem from="1608196004497" duration="1130000" />
+      <workItem from="1608197238672" duration="5436000" />
     </task>
     <task id="LOCAL-00001" summary="first update:solve much problem">
       <created>1608037615524</created>
@@ -693,9 +508,6 @@
     <option name="localTasksCounter" value="6" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12050000" />
-  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -704,44 +516,6 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1455" height="944" extended-state="6" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28704366" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3296433" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.14637147" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5707257" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info anchor="bottom" id="Spring" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" />
-      <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" />
-      <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Database" order="2" weight="0.32999283" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Maven" order="6" weight="0.32999283" />
-      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -752,12 +526,6 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
@@ -791,81 +559,114 @@
       <screen x="1920" y="76" width="1600" height="860" />
     </state>
     <state x="2312" y="167" key="#SQL_Dialects/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608100781676" />
-    <state x="2104" y="148" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608078692090">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608197134182">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608078643872" />
+    <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608197134182" />
     <state x="2104" y="148" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608078692090" />
-    <state x="2525" y="214" key="#com.intellij.ide.util.MemberChooser" timestamp="1608126200985">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state x="726" y="167" key="#com.intellij.ide.util.MemberChooser" timestamp="1608211712770">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="726" y="167" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608211712770" />
     <state x="2525" y="214" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608126200985" />
+    <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1608197406492">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="269" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608197406492" />
     <state x="2312" y="102" key="CommitChangelistDialog2" timestamp="1608101884362">
       <screen x="1920" y="76" width="1600" height="860" />
     </state>
     <state x="2312" y="102" key="CommitChangelistDialog2/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608101884362" />
-    <state x="2374" y="206" key="FileChooserDialogImpl" timestamp="1608078673867">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state x="545" y="157" key="FileChooserDialogImpl" timestamp="1608196017527">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="545" y="157" key="FileChooserDialogImpl/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608078643872" />
+    <state x="545" y="157" key="FileChooserDialogImpl/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608196017527" />
     <state x="2374" y="206" key="FileChooserDialogImpl/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608078673867" />
-    <state width="1401" height="66" key="GridCell.Tab.0.bottom" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.0.bottom" timestamp="1608212395820">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1397" height="230" key="GridCell.Tab.0.bottom/0.0.1440.929@0.0.1440.929" timestamp="1608078643872" />
+    <state width="1815" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395820" />
     <state width="1401" height="66" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.0.center" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.0.center" timestamp="1608212395820">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1397" height="230" key="GridCell.Tab.0.center/0.0.1440.929@0.0.1440.929" timestamp="1608078643872" />
+    <state width="1815" height="212" key="GridCell.Tab.0.center/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395820" />
     <state width="1401" height="66" key="GridCell.Tab.0.center/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.0.left" timestamp="1608127125666">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.0.left" timestamp="1608212395820">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1397" height="230" key="GridCell.Tab.0.left/0.0.1440.929@0.0.1440.929" timestamp="1608078643872" />
+    <state width="1815" height="212" key="GridCell.Tab.0.left/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395820" />
     <state width="1401" height="66" key="GridCell.Tab.0.left/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125666" />
-    <state width="1401" height="66" key="GridCell.Tab.0.right" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.0.right" timestamp="1608212395820">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1397" height="230" key="GridCell.Tab.0.right/0.0.1440.929@0.0.1440.929" timestamp="1608078643872" />
+    <state width="1815" height="212" key="GridCell.Tab.0.right/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395820" />
     <state width="1401" height="66" key="GridCell.Tab.0.right/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.1.bottom" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.1.bottom" timestamp="1608212395821">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1815" height="212" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395821" />
     <state width="1401" height="66" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.1.center" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.1.center" timestamp="1608212395821">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1815" height="212" key="GridCell.Tab.1.center/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395821" />
     <state width="1401" height="66" key="GridCell.Tab.1.center/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.1.left" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.1.left" timestamp="1608212395820">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1815" height="212" key="GridCell.Tab.1.left/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395820" />
     <state width="1401" height="66" key="GridCell.Tab.1.left/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.1.right" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.1.right" timestamp="1608212395821">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1815" height="212" key="GridCell.Tab.1.right/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395821" />
     <state width="1401" height="66" key="GridCell.Tab.1.right/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.2.bottom" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.2.bottom" timestamp="1608212395821">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1815" height="212" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395821" />
     <state width="1401" height="66" key="GridCell.Tab.2.bottom/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.2.center" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.2.center" timestamp="1608212395821">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1815" height="212" key="GridCell.Tab.2.center/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395821" />
     <state width="1401" height="66" key="GridCell.Tab.2.center/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.2.left" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.2.left" timestamp="1608212395821">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1815" height="212" key="GridCell.Tab.2.left/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395821" />
     <state width="1401" height="66" key="GridCell.Tab.2.left/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state width="1401" height="66" key="GridCell.Tab.2.right" timestamp="1608127125667">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1815" height="212" key="GridCell.Tab.2.right" timestamp="1608212395821">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1815" height="212" key="GridCell.Tab.2.right/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608212395821" />
     <state width="1401" height="66" key="GridCell.Tab.2.right/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608127125667" />
-    <state x="2104" y="91" key="SettingsEditor" timestamp="1608078709354">
-      <screen x="1920" y="76" width="1600" height="860" />
+    <state width="1695" height="399" key="GridCell.Tab.3.bottom" timestamp="1608196270608">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1695" height="399" key="GridCell.Tab.3.bottom/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608196270608" />
+    <state width="1695" height="399" key="GridCell.Tab.3.center" timestamp="1608196270608">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1695" height="399" key="GridCell.Tab.3.center/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608196270608" />
+    <state width="1695" height="399" key="GridCell.Tab.3.left" timestamp="1608196270607">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1695" height="399" key="GridCell.Tab.3.left/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608196270607" />
+    <state width="1695" height="399" key="GridCell.Tab.3.right" timestamp="1608196270608">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1695" height="399" key="GridCell.Tab.3.right/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608196270608" />
+    <state x="268" y="44" key="SettingsEditor" timestamp="1608197335648">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="201" y="39" key="SettingsEditor/0.0.1440.929@0.0.1440.929" timestamp="1608078643872" />
-    <state x="268" y="44" key="SettingsEditor/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608078643872" />
+    <state x="268" y="44" key="SettingsEditor/0.0.1920.1040/1920.76.1600.860@0.0.1920.1040" timestamp="1608197335648" />
     <state x="2104" y="91" key="SettingsEditor/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608078709354" />
     <state x="2012" y="168" width="1416" height="676" key="ShowDiffWithBranchDialog" timestamp="1608078643872" />
     <state x="2012" y="168" width="1416" height="676" key="ShowDiffWithBranchDialog/0.0.1920.1040/1920.76.1600.860@1920.76.1600.860" timestamp="1608078643872" />
@@ -888,276 +689,5 @@
       </path>
     </expand>
     <select />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/filter/UserFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/filter/CharacterEncodingFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/Impl/ContentDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/biaoqinbaodaquan.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/web-apply/set.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#strong#0;n#span#1;n#span#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/500/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/500/jquery-2.1.1.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/sign.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="51" column="49" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/LoginService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/servlet/DispatcherServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="71" column="63" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/admin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="10694" column="36" lean-forward="true" selection-start-line="10694" selection-start-column="36" selection-end-line="10694" selection-end-column="36" />
-          <folding>
-            <element signature="e#31604#31838#2" expanded="true" />
-            <element signature="e#32734#32887#1" expanded="true" />
-            <element signature="e#32928#33162#1" expanded="true" />
-            <element signature="e#36498#36774#2" expanded="true" />
-            <element signature="e#37697#37850#1" expanded="true" />
-            <element signature="e#37891#38167#1" expanded="true" />
-            <element signature="e#71817#72004#2" expanded="true" />
-            <element signature="e#72259#72395#2" expanded="true" />
-            <element signature="e#72846#72979#2" expanded="true" />
-            <element signature="e#74341#74494#1" expanded="true" />
-            <element signature="e#88301#88531#2" expanded="true" />
-            <element signature="e#89544#89780#2" expanded="true" />
-            <element signature="e#124911#125088#2" expanded="true" />
-            <element signature="e#125144#125321#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/admin.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="10586" column="18" lean-forward="true" selection-start-line="10586" selection-start-column="18" selection-end-line="10586" selection-end-column="18" />
-          <folding>
-            <element signature="e#29405#29639#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/forum.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="77" lean-forward="true" selection-start-line="12" selection-start-column="77" selection-end-line="13" selection-end-column="81" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login/registMsg.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/login/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2360">
-          <caret line="118" column="1" lean-forward="true" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/web-apply/forgot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/forget.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding>
-            <element signature="e#15#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/left-nav.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="84" selection-start-line="15" selection-start-column="75" selection-end-line="15" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/clock.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/forgot.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="37" column="110" selection-start-line="37" selection-start-column="103" selection-end-line="37" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/biz/content.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/content.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/web-apply/about.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="15" lean-forward="true" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1220">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/servlet/UserServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="105" column="33" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="41" column="33" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/UserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/Impl/UserDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="58" column="36" lean-forward="true" selection-start-line="58" selection-start-column="36" selection-end-line="58" selection-end-column="36" />
-          <folding>
-            <element signature="method#addUser#0;class#UserDAOImpl#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/utils/WriteUitl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/utils/UuidUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-968" />
-      </provider>
-    </entry>
-    <entry file="jar://S:/apache-maven-3.5.4/repo/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar!/com/mysql/cj/jdbc/AbandonedConnectionCleanupThread.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/ConnectionUtils.c3p0.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="57" lean-forward="true" selection-start-line="1" selection-start-column="57" selection-end-line="1" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/beans/Art_count.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/druid.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
   </component>
 </project>
