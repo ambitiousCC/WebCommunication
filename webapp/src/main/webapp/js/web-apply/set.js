@@ -140,6 +140,15 @@ function loadUse() {
                 p:"修改密码：修改个人账号密码"
             },
             {
+                title:"注销用户",
+                id:"deleteUserBtn",
+                href:"",
+                class:"btn btn-danger",
+                attr:"",
+                value:"注销用户",
+                p:"注销用户：注销此用户"
+            },
+            {
                 title:"管理文章",
                 id:"setArticle",
                 href:"",

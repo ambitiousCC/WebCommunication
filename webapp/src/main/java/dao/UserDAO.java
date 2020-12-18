@@ -103,4 +103,11 @@ public interface UserDAO {
      * @return
      */
     List<Article> findAllUserArts(Long user_id);
+
+    /**
+     * 查询用户通过邮件
+     * @param email
+     * @return
+     */
+    String findUserCodeByEmail(String email);
 }

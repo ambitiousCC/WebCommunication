@@ -4,6 +4,7 @@ package service.impl;
 import beans.Article;
 import beans.SetArt;
 import beans.User;
+import beans.Visitor;
 import dao.Impl.UserDAOImpl;
 import dao.UserDAO;
 import service.UserService;
@@ -18,6 +19,7 @@ import java.util.List;
  */
 public class UserServiceImpl implements UserService {
     private UserDAO userDAO = new UserDAOImpl();
+    MailUtils mailUtils = new MailUtils();
     /**
      * 传入别人的user_id
      * @param user_id
@@ -68,8 +70,8 @@ public class UserServiceImpl implements UserService {
         user.setCreate_user_time(new Date());
         userDAO.addUser(user);
         //邮箱！！！！！
-        String url = "http://localhost:8082/user/activeAccount?code="+user.getCode();
-        return MailUtils.sendMail(user.getUsername(),user.getEmail(),url,"请激活账号您在编程爱好者交流平台的账号");
+        String url = webLocation+"/user/activeAccount?code="+user.getCode();
+        return mailUtils.sendMail(mailUtils.mailOfActive(user,url),user.getEmail(),"请激活账号您在编程爱好者交流平台的账号");
     }
     /**
      * 传入注册名称，判断是否已经存在用户
@@ -118,5 +120,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Article> findAllUserArts(Long user_id) {
         return userDAO.findAllUserArts(user_id);
+    }
+
+    @Override
+    public String findUserCodeByEmail(String email) {
+        return userDAO.findUserCodeByEmail(email);
+    }
+
+    @Override
+    public boolean sendCodeEmail(String email, Visitor visitor, String webLocation) {
+        //在这里发送邮件处理
+        String url = webLocation + "/sendEmail/resolve";
+        return mailUtils.sendMail(mailUtils.mailOfPassword(url,visitor),email,"重置密码");
     }
 }

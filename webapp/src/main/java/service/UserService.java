@@ -3,6 +3,7 @@ package service;
 import beans.Article;
 import beans.SetArt;
 import beans.User;
+import beans.Visitor;
 
 import java.util.List;
 
@@ -89,4 +90,20 @@ public interface UserService {
      * @return
      */
     List<Article> findAllUserArts(Long user_id);
+
+    /**
+     * 查询邮件
+     * @param email
+     * @return
+     */
+    String findUserCodeByEmail(String email);
+
+    /**
+     * 发送确认邮件
+     * @param email
+     * @param visitor
+     * @param webLocation
+     * @return
+     */
+    boolean sendCodeEmail(String email, Visitor visitor, String webLocation);
 }

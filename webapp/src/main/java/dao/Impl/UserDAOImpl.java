@@ -409,4 +409,10 @@ public class UserDAOImpl implements UserDAO {
         String sql = "SELECT title,create_time,article_id FROM `article` where user_id=?";
         return template.query(sql,new BeanPropertyRowMapper<Article>(Article.class),user_id);
     }
+
+    @Override
+    public String findUserCodeByEmail(String email) {
+        String sql = "SELECT code FROM user WHERE email=? ";
+        return template.queryForObject(sql,String.class,email);
+    }
 }

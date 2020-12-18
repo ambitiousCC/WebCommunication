@@ -1,5 +1,8 @@
 package web.utils;
 
+import beans.User;
+import beans.Visitor;
+
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -9,20 +12,18 @@ import java.util.Properties;
  * 发邮件工具类
  */
 public final class MailUtils {
-    private static final String USER = "2146639830@qq.com"; // 发件人称号，同邮箱地址
-    private static final String PASSWORD = "szjqmygpcptidjej"; // 如果是qq邮箱可以使户端授权码，或者登录密码
-    private static final String mainUrl = "http://localhost:8082/main"; //主页
-    private static final String signUrl = "http://localhost:8082/login"; //登录
-    private static final String globalUrl = "http://localhost:8082/global"; //文章
-    private static final String adUrl = "http://localhost:8082/login"; //广告说明
+    private final String USER = "2146639830@qq.com"; // 发件人称号，同邮箱地址
+    private final String PASSWORD = "szjqmygpcptidjej"; // 如果是qq邮箱可以使户端授权码，或者登录密码
+    private final String mainUrl = "http://localhost:8082/main"; //主页
+    private final String signUrl = "http://localhost:8082/login"; //登录
+    private final String globalUrl = "http://localhost:8082/global"; //文章
+    private final String adUrl = "http://localhost:8082/login"; //广告说明
     /**
-     *
-     * @param to 收件人邮箱
+     * @param user 收件人
      * @param url 激活链接
-     * @param title 标题
      */
     /* 发送验证信息的邮件 */
-    public static boolean sendMail(String user,String to, String url, String title){
+    public String mailOfActive(User user, String url) {
         String content = "<div id=\"qm_con_body\">\n" +
                 "    <div id=\"mailContentContainer\" class=\"qmbox qm_con_body_content qqmail_webmail_only\">\n" +
                 "        <div style=\"width:100%!important;font-family:Helvetica,Arial,sans-serif;background-color:#ececec;margin:0;padding:0\"\n" +
@@ -61,7 +62,7 @@ public final class MailUtils {
                 "                                                                </tbody>\n" +
                 "                                                            </table>\n" +
                 "                                                            <div style=\"font-size:12px;color:#33ae81\">\n" +
-                "                                                                <a href=\""+signUrl+"\"\n" +
+                "                                                                <a href=\"" + signUrl + "\"\n" +
                 "                                                                    style=\"font-weight:bold;color:#333;text-decoration:none\"\n" +
                 "                                                                    target=\"_blank\" rel=\"noopener\">社区 • 账号</a>\n" +
                 "                                                            </div>\n" +
@@ -97,7 +98,7 @@ public final class MailUtils {
                 "                                                                        <td valign=\"middle\"\n" +
                 "                                                                            style=\"border-collapse:collapse;font-family:Helvetica,Arial,sans-serif\">\n" +
                 "                                                                            <div style=\"font-size:12px;color:#33ae81\"><a\n" +
-                "                                                                                    href=\""+mainUrl+"\"\n" +
+                "                                                                                    href=\"" + mainUrl + "\"\n" +
                 "                                                                                    style=\"font-weight:bold;color:#333;text-decoration:none\"\n" +
                 "                                                                                    target=\"_blank\" rel=\"noopener\">访问网站\n" +
                 "                                                                                    ➜</a></div>\n" +
@@ -127,7 +128,7 @@ public final class MailUtils {
                 "                                    <tr style=\"border-collapse:collapse\">\n" +
                 "                                        <td width=\"640\" align=\"center\" bgcolor=\"#FFFFFF\"\n" +
                 "                                            style=\"border-collapse:collapse;font-family:Helvetica,Arial,sans-serif\">\n" +
-                "                                            <a href=\""+mainUrl+"\" target=\"_blank\" rel=\"noopener\">\n" +
+                "                                            <a href=\"" + mainUrl + "\" target=\"_blank\" rel=\"noopener\">\n" +
                 "                                                <!-- 修改此处插入的图片 -->\n" +
                 "                                                <img height=\"140\" width=\"640\"\n" +
                 "                                                    src=\"https://s3.ax1x.com/2020/12/15/rK46iD.png\">\n" +
@@ -154,11 +155,11 @@ public final class MailUtils {
                 "                                                                            <br><br>\n" +
                 "                                                                            <p align=\"left\"\n" +
                 "                                                                                style=\"font-size:18px;line-height:24px;color:#333;font-weight:bold;margin-top:0px;margin-bottom:18px;font-family:Helvetica,Arial,sans-serif\">\n" +
-                "                                                                                "+user+"，你好：\n" +
+                "                                                                                " + user + "，你好：\n" +
                 "                                                                            </p>\n" +
                 "                                                                            <div align=\"left\"\n" +
                 "                                                                                style=\"font-size:13px;line-height:20px;color:#444444;margin-top:0px;margin-bottom:18px;font-family:Helvetica,Arial,sans-serif\">\n" +
-                "                                                                                <a href=\""+url+"\" style=\"color:#4183c4;font-weight:bold;\">点击激活你的账号</a>\n" +
+                "                                                                                <a href=\"" + url + "\" style=\"color:#4183c4;font-weight:bold;\">点击激活你的账号</a>\n" +
                 "                                                                                <br><br>\n" +
                 "                                                                                如果该操作不是你触发的，请忽略 \uD83D\uDE4F\n" +
                 "                                                                            </div>\n" +
@@ -243,15 +244,15 @@ public final class MailUtils {
                 "                                                                <p align=\"left\"\n" +
                 "                                                                    style=\"font-size:12px;line-height:15px;color:#666666;margin-top:0px;margin-bottom:5px;white-space:normal\">\n" +
                 "                                                                    <span>\n" +
-                "                                                                        <a href=\""+mainUrl+"\"\n" +
+                "                                                                        <a href=\"" + mainUrl + "\"\n" +
                 "                                                                            style=\"color:#4183c4;font-weight:bold;text-decoration:none\"\n" +
                 "                                                                            target=\"_blank\" rel=\"noopener\">主页</a>\n" +
                 "                                                                        <span style=\"color:#999\">•</span>\n" +
-                "                                                                        <a href=\""+globalUrl+"\"\n" +
+                "                                                                        <a href=\"" + globalUrl + "\"\n" +
                 "                                                                            style=\"color:#4183c4;font-weight:bold;text-decoration:none\"\n" +
                 "                                                                            target=\"_blank\" rel=\"noopener\">社区</a>\n" +
                 "                                                                        <span style=\"color:#999\">•</span>\n" +
-                "                                                                        <a href=\""+adUrl+"\"\n" +
+                "                                                                        <a href=\"" + adUrl + "\"\n" +
                 "                                                                            style=\"color:#4183c4;font-weight:bold;text-decoration:none\"\n" +
                 "                                                                            target=\"_blank\" rel=\"noopener\">广告投放</a>\n" +
                 "                                                                    </span>\n" +
@@ -259,7 +260,7 @@ public final class MailUtils {
                 "                                                            </span>\n" +
                 "                                                            <p align=\"left\"\n" +
                 "                                                                style=\"font-size:12px;line-height:15px;color:#ccc;margin-top:0px;margin-bottom:15px\">\n" +
-                "                                                                了解更多，请详见<a href=\""+signUrl+"\" target=\"_blank\" style=\"color:#999;font-weight:bold;text-decoration:none\"\n" +
+                "                                                                了解更多，请详见<a href=\"" + signUrl + "\" target=\"_blank\" style=\"color:#999;font-weight:bold;text-decoration:none\"\n" +
                 "                                                                    rel=\"noopener\">社区简介</a>\n" +
                 "                                                            </p>\n" +
                 "                                                        </td>\n" +
@@ -270,7 +271,7 @@ public final class MailUtils {
                 "                                                            style=\"border-collapse:collapse;font-family:Helvetica,Arial,sans-serif\">\n" +
                 "                                                            <p align=\"right\"\n" +
                 "                                                                style=\"font-size:12px;line-height:18px;color:#999;margin-top:0px;margin-bottom:15px;white-space:normal\">\n" +
-                "                                                                <span>© 2020 <a href=\""+mainUrl+"\"\n" +
+                "                                                                <span>© 2020 <a href=\"" + mainUrl + "\"\n" +
                 "                                                                        style=\"color:#4183c4;font-weight:bold;text-decoration:none\"\n" +
                 "                                                                        target=\"_blank\"\n" +
                 "                                                                        rel=\"noopener\">bbs.ambitiouscc.com</a></span><br\n" +
@@ -322,6 +323,18 @@ public final class MailUtils {
                 "        </style>\n" +
                 "    </div>\n" +
                 "</div>";
+        return content;
+    }
+
+    public String mailOfPassword(String url, Visitor visitor) {
+        //发送重置密码的页面提示:
+        //1. 跳转的链接
+        //2. 修改的用户信息
+        String content = "";
+        return content;
+    }
+
+    public boolean sendMail(String content,String to, String title) {
         try {
             final Properties props = new Properties();
             props.put("mail.smtp.auth", "true");
@@ -370,7 +383,7 @@ public final class MailUtils {
     }
 
     public static void main(String[] args) throws Exception { // 做测试用
-        MailUtils.sendMail("名山小奏","1297571059@qq.com","你好，这是一封测试邮件，无需回复。","测试邮件");
+        new MailUtils().sendMail("你好，这是一封测试邮件，无需回复。","1297571059@qq.com","测试邮件");
         System.out.println("发送成功");
     }
 }

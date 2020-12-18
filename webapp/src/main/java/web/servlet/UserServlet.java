@@ -24,6 +24,7 @@ public class UserServlet extends HttpServlet {
     private UserService userService;
     private LoginService loginService;
     private ObjectMapper mapper;
+    private String webLocation;
     {
         userService = new UserServiceImpl();
         loginService = new LoginServiceImpl();
@@ -47,6 +48,8 @@ public class UserServlet extends HttpServlet {
                 getClientIp.getBrowserVersion(req),
                 getClientIp.getOsName(req),
                 AddressUtils.getAddress(getClientIp.getIpaddr(req))));
+        webLocation = req.getScheme() + "://" + req.getServerName()
+                + ":" + req.getServerPort();
 //        String path = req.getRequestURI();
 //        System.out.println(path);
 //        String params = path.substring(path.indexOf("/",1)+1,path.length());
@@ -94,7 +97,6 @@ public class UserServlet extends HttpServlet {
             activeAccount(req, resp);
         }
         else if (Objects.equals("/user/sendEmail",path)) {
-            System.out.println("a");
             sendEmail(req,resp);
         }
         else if (Objects.equals("/user/save/password.do",path)) {
@@ -131,23 +133,22 @@ public class UserServlet extends HttpServlet {
     }
 
     private void sendEmail(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        System.out.println("b");
         Visitor visitor = (Visitor) req.getSession().getAttribute("visitor");
-        System.out.println("visitor:"+visitor.toString());
-//        String email = req.getParameter("email");
-//        //通过邮箱查找是否注册成功
-//        boolean flag = userService.isEmptyUserFindByEmail(email);
-//        if(!flag) {
-//            WriteUitl.writeValue(flag,resp);
-//            return ;
-//        }
-//        //查找激活码
-//        String code;
-//
-//        //发送带有激活码的邮件
-//
-//        //然后重新弄一个处理器处理修改密码的
 
+        String email = req.getParameter("email");
+        //通过邮箱查找是否注册成功
+        boolean flag1 = userService.isEmptyUserFindByEmail(email);
+        if(!flag1) {
+            WriteUitl.writeValue(flag1,resp);
+            return ;
+        }
+        //查找激活码
+        String code = userService.findUserCodeByEmail(email);
+
+        //发送带有激活码的邮件
+        boolean flag2 = userService.sendCodeEmail(code,visitor,webLocation);
+        //然后重新弄一个处理器处理修改密码的
+        WriteUitl.writeValue(flag2,resp);
     }
 
     /**
@@ -249,10 +250,8 @@ public class UserServlet extends HttpServlet {
             if (!flagName) {
                 //默认昵称和用户名一致
                 user.setNickname(user.getUsername());
-                String weblocation = req.getScheme() + "://" + req.getServerName()
-                        + ":" + req.getServerPort();
                 //进一步注册
-                boolean flag = userService.regist(user,weblocation);
+                boolean flag = userService.regist(user,webLocation);
                 //4向前台响应
                 if (flag) {
                     //成功注册
@@ -301,10 +300,10 @@ public class UserServlet extends HttpServlet {
      * 退出
      */
     private void exist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            //销毁
-            req.getSession().invalidate();
-            //重定向
-            resp.sendRedirect("/main");
+        //销毁
+        req.getSession().invalidate();
+        //重定向
+        resp.sendRedirect("/main");
     }
 
     /**
@@ -398,8 +397,7 @@ public class UserServlet extends HttpServlet {
             return ;
         }
         String path = this.getServletContext().getRealPath(savePath);
-        String url = req.getScheme() + "://" + req.getServerName()
-                + ":" + req.getServerPort() + "/images/users/ico/" + EncodingUtils.GenerateImage(imgStr, path);
+        String url = webLocation + "/images/users/ico/" + EncodingUtils.GenerateImage(imgStr, path);
         flag = userService.saveUserImg(url,user.getUser_id());
 
         //更新后修改缓存
