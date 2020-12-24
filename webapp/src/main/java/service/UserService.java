@@ -17,11 +17,18 @@ public interface UserService {
     User findOtherUser(Long user_id);
 
     /**
-     * 注销用户
+     * 注销用户（默认）
      * @param user_id 用户对象
      * @return 判断是否成功
      */
     boolean removeUser(Long user_id);
+
+    /**
+     * 注销用户
+     * @param email
+     * @return
+     */
+    boolean removeUserByEmail(String email);
 
     /**
      * 检查密码是否一致
@@ -101,9 +108,27 @@ public interface UserService {
     /**
      * 发送确认邮件
      * @param email
+     * @param code
      * @param visitor
      * @param webLocation
      * @return
      */
-    boolean sendCodeEmail(String email, Visitor visitor, String webLocation);
+    boolean sendCodeEmail(String email, String code, Visitor visitor, String webLocation);
+
+    /**
+     * 查询用户是否存在
+     * @param email
+     * @param code
+     * @return
+     */
+    boolean isEmptyUserFindByEmailAndCode(String email, String code);
+
+    /**
+     * 注销用户
+     * @param user
+     * @param visitor
+     * @param webLocation
+     * @return
+     */
+    boolean sendOffEmail(User user, Visitor visitor,String webLocation);
 }

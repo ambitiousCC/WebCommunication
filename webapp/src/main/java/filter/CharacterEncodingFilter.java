@@ -2,18 +2,26 @@ package filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
+
 public class CharacterEncodingFilter implements Filter {
-    private FilterConfig config;
+    private String encoding;
+    private String contentType;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException{
-        //过滤器应该怎么返回到原来的页面去？
-        request.setCharacterEncoding(config.getInitParameter("charset"));
-        response.setCharacterEncoding(config.getInitParameter("charset"));
+        //过滤器应该怎么返回到原来的页面
+        HttpServletResponse resp = (HttpServletResponse) response;
+        HttpServletRequest req = (HttpServletRequest) request;
+        req.setCharacterEncoding(encoding);
+        resp.setCharacterEncoding(encoding);
         try {
-            chain.doFilter(request, response);
+            System.out.println(new Date().getTime());
+            chain.doFilter(req,resp);
         } catch (ServletException e) {
             System.out.println("服务器出错，错误地址在字码过滤器");
             e.printStackTrace();
@@ -27,6 +35,7 @@ public class CharacterEncodingFilter implements Filter {
 
     @Override
     public void init(FilterConfig config){
-        this.config = config;
+        this.encoding = config.getInitParameter("encoding");
+        this.contentType = config.getInitParameter("contentType");
     }
 }

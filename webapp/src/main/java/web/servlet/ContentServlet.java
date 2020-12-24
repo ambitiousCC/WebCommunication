@@ -12,9 +12,7 @@ import service.LoginService;
 import service.impl.ContentServiceImpl;
 import service.impl.FavoriteServiceImpl;
 import service.impl.LoginServiceImpl;
-import web.utils.UuidUtil;
-import web.utils.WriteUitl;
-import web.utils.isEmptyStr;
+import web.utils.*;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -404,7 +402,7 @@ public class ContentServlet extends HttpServlet {
 
         //2数据转换
         Long comment_id = null;
-        if (null != comment_idStr && !"".equals(comment_idStr)) {
+        if (null != comment_idStr && !"".equals(comment_idStr)&&!"NaN".equals(comment_idStr)) {
             comment_id = Long.valueOf(comment_idStr);
         }
 
@@ -845,8 +843,19 @@ public class ContentServlet extends HttpServlet {
             outputStream.close();
             //设置image对象
             // 返回图片访问路径
-            String url = req.getScheme() + "://" + req.getServerName()
-                    + ":" + req.getServerPort() + "/images/articleImg/" + uuidFileName;
+            String filePath = this.getServletConfig().getServletContext().getRealPath("/")+"/images/articleImg\\" + uuidFileName;
+            //上传至七牛云图传
+            fileName = "/article/imgs/" + uuidFileName;
+            boolean isSuccess = QiNiuUtil.upload(filePath,fileName,true);
+            String url = "";
+            //删除本地路径下的文件
+            if(isSuccess) {
+                System.out.println("文章图片上传成功");
+                //成功后删除本地图片
+                FileUtils.deleteFile(filePath);
+                url = "http://"+QiNiuUtil.fileUrl(fileName);
+            }
+
             image.setUrl(url);
         }
         //返回结果

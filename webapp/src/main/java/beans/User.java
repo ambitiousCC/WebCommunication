@@ -6,8 +6,8 @@ import java.util.Date;
 public class User implements Serializable {
     private Long user_id;
     private String username;
-    private String password;
     private String nickname;
+    private String password;
     private Date birthday;
     private int age;
     private String phone;
@@ -207,8 +207,8 @@ public class User implements Serializable {
     public User(Long user_id, String username, String password, String nickname, Date birthday, int age, String phone, String address, String email, String sex, Date create_user_time, String status, String code, String user_img, String user_ico, String user_des, String user_comments, Date last_login) {
         this.user_id = user_id;
         this.username = username;
-        this.password = password;
         this.nickname = nickname;
+        this.password = password;
         this.birthday = birthday;
         this.age = age;
         this.phone = phone;

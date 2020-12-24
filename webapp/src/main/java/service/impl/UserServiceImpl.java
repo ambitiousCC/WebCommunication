@@ -45,6 +45,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public boolean removeUserByEmail(String email) {
+        return userDAO.removeUserByEmail(email);
+    }
+
+    @Override
     public boolean checkPassword(User user) {
         user.setLast_login(new Date());
         return userDAO.checkPassword(user);
@@ -70,7 +75,7 @@ public class UserServiceImpl implements UserService {
         user.setCreate_user_time(new Date());
         userDAO.addUser(user);
         //邮箱！！！！！
-        String url = webLocation+"/user/activeAccount?code="+user.getCode();
+        String url = webLocation+"/user/activeAccount";
         return mailUtils.sendMail(mailUtils.mailOfActive(user,url),user.getEmail(),"请激活账号您在编程爱好者交流平台的账号");
     }
     /**
@@ -80,6 +85,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean isEmptyUserFindByUsername(String name) {
+        System.out.println("进入service，开始进入dao层");
         return userDAO.isEmptyUserFindByUsername(name);
     }
     @Override
@@ -128,9 +134,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean sendCodeEmail(String email, Visitor visitor, String webLocation) {
+    public boolean sendCodeEmail(String email,String code, Visitor visitor, String webLocation) {
         //在这里发送邮件处理
-        String url = webLocation + "/sendEmail/resolve";
-        return mailUtils.sendMail(mailUtils.mailOfPassword(url,visitor),email,"重置密码");
+        String url = webLocation + "/user/sendEmail/resolve";
+        return mailUtils.sendMail(mailUtils.mailOfPassword(url,email,code,visitor),email,"修改密码");
+    }
+
+    @Override
+    public boolean isEmptyUserFindByEmailAndCode(String email, String code) {
+        return userDAO.isEmptyUserFindByEmailAndCode(email,code);
+    }
+
+    @Override
+    public boolean sendOffEmail(User user, Visitor visitor,String webLocation) {
+        String url = webLocation + "/user/off/success";
+        return mailUtils.sendMail(mailUtils.mailOfOffUser(url,user.getEmail(),user.getCode(),visitor),user.getEmail(),"注销用户");
     }
 }

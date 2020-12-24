@@ -21,6 +21,7 @@ public final class UuidUtil {
 	 */
 	public static void main(String[] args) {
 		System.out.println(getUuidFileName("1.jpg"));
+		System.out.println(getUuid());
 //		System.out.println(UuidUtil.getUuid());
 //		System.out.println(UuidUtil.getUuid());
 //		System.out.println(UuidUtil.getUuid());

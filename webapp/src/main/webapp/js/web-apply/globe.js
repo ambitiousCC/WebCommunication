@@ -93,10 +93,10 @@ function load(tid,pid,currentPage,title) {
                 article.create_time = timestampToTime(article.create_time);
                 var list = '<div class="row globe-row">\n'+
                     '<div class="news-list">\n'+
-                    '<div class="carousel-inner" role="listbox">\n'+
-                    '<div class="item active article">\n' +
-                    '<a href="/content?article_id='+article.article_id+'" target="_blank"><img src="'+article.article_img+'"/></a>\n' +
-                    '<div class="carousel-caption" style="float: left;" ><a class="article_title" href="/content?article_id='+article.article_id+'"> '+article.title+'</a><span class="article_author" title="'+article.article_author+'" rel="author" style="float: right;">'+article.article_author+'</span>\n' +
+                    '<div class="carousel-inner article-list-box" role="listbox">\n'+
+                    '<div class="item active article article-list-box-inner">\n' +
+                    '<a href="/content?article_id='+article.article_id+'" target="_blank"><img src="'+article.article_img+'" class="article-img"/></a>\n' +
+                    '<div class="carousel-caption" style="float: left;" ><a class="article_title" href="/content?article_id='+article.article_id+'"> '+article.title+'</a><span class="article-time">【发布时间】'+article.create_time+'</span><span class="article_author" title="'+article.article_author+'" rel="author" style="float: right;">【作者】'+article.article_author+'</span>\n' +
                     '</div>\n' +
                     '<span class="carousel-bg"></span>\n' +
                     '</div>\n' +
@@ -108,13 +108,13 @@ function load(tid,pid,currentPage,title) {
                     '</a>\n' +
                     '<span>\n' +
                     '<span href="" target="_blank" class="article-tags">\n' +
-                    '<a><span class="tags">【哲学】</span></a>\n' +
-                    '<a><span class="title">【动漫】</span></a>\n' +
+                    // '<a><span class="tags">【哲学】</span></a>\n' +
+                    // '<a><span class="title">【动漫】</span></a>\n' +
                     '</span>\n' +
-                    '<span class="article-info">\n' +
-                    '<span class="identity"></span> <span class="time">'+article.create_time+'</span>\n' +
-                    '<span class="look"> 共 <strong>n</strong> 人围观</span>\n' +
-                    '</span>\n' +
+                    // '<span class="article-info">\n' +
+                    // '<span class="identity"></span> \n' +
+                    // '<span class="look"> 共 <strong>n</strong> 人围观</span>\n' +
+                    // '</span>\n' +
                     '</span>\n' +
                     '</div>' +
                     '</div>\n' +
@@ -125,5 +125,38 @@ function load(tid,pid,currentPage,title) {
             $("#article").attr("name", title);
             $("#article").html(article_li);
             window.scrollTo(0,0);
+            checkImgSize();
         });
+}
+
+setInterval(function () {
+    checkImgSize();
+},1000);
+
+
+function checkImgSize() {
+    $('.article-img').each(function() {
+        var maxWidth = $('.article-list-box-inner').width();
+        // var maxWidth = 800; // 图片最大宽度
+        var maxHeight = 400;    // 图片最大高度
+        var ratio = 0;  // 缩放比例
+        var width = $(this).width();    // 图片实际宽度
+        var height = $(this).height();  // 图片实际高度
+
+        // 检查图片是否超宽
+        if(width > maxWidth){
+            ratio = maxWidth / width;   // 计算缩放比例
+            $(this).css("width", maxWidth); // 设定实际显示宽度
+            // height = height * ratio;    // 计算等比例缩放后的高度
+            // $(this).css("height", height);  // 设定等比例缩放后的高度
+        }
+
+        // 检查图片是否超高
+        if(height > maxHeight){
+            ratio = maxHeight / height; // 计算缩放比例
+            $(this).css("height", maxHeight);   // 设定实际显示高度
+            // width = width * ratio;    // 计算等比例缩放后的高度
+            // $(this).css("width", width * ratio);    // 设定等比例缩放后的高度
+        }
+    });
 }

@@ -16,7 +16,7 @@ public final class JedisUtil {
 
     static {
         //读取配置文件
-        InputStream is = JedisPool.class.getClassLoader().getResourceAsStream("jedis.properties");
+        InputStream is = JedisPool.class.getClassLoader().getResourceAsStream("/jedis.properties");
         //创建Properties对象
         Properties pro = new Properties();
         //关联文件

@@ -1,6 +1,7 @@
 package web.servlet;
 
 import beans.*;
+import cn.hutool.core.io.FileUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.beanutils.BeanUtils;
 import service.LoginService;
@@ -25,6 +26,7 @@ public class UserServlet extends HttpServlet {
     private LoginService loginService;
     private ObjectMapper mapper;
     private String webLocation;
+    private String imgLocation = "http://img.ambitiousCC.com";
     {
         userService = new UserServiceImpl();
         loginService = new LoginServiceImpl();
@@ -47,9 +49,12 @@ public class UserServlet extends HttpServlet {
                 getClientIp.getBrowserName(req),
                 getClientIp.getBrowserVersion(req),
                 getClientIp.getOsName(req),
-                AddressUtils.getAddress(getClientIp.getIpaddr(req))));
+                AddressUtils.getAddress(getClientIp.getIpaddr(req)),new Date()));
         webLocation = req.getScheme() + "://" + req.getServerName()
                 + ":" + req.getServerPort();
+
+        System.out.println("测试用户登陆功能开始-----");
+        System.out.println("打印当前访问网络"+webLocation);
 //        String path = req.getRequestURI();
 //        System.out.println(path);
 //        String params = path.substring(path.indexOf("/",1)+1,path.length());
@@ -67,6 +72,7 @@ public class UserServlet extends HttpServlet {
         String path = req.getServletPath();
 
         if (Objects.equals("/user/login", path)) {
+            System.out.println("能够截取请求连接");
             login(req, resp);
         }
         else if (Objects.equals("/user/regist", path)) {
@@ -78,6 +84,12 @@ public class UserServlet extends HttpServlet {
         }
         else if (Objects.equals("/user/exist", path)) {
             exist(req, resp);
+        }
+        else if (Objects.equals("/user/off.do",path)) {
+            off(req,resp);
+        }
+        else if (Objects.equals("/user/off/success",path)) {
+            offSuccess(req,resp);
         }
         else if (Objects.equals("/user/check.do",path)) {
             try {
@@ -125,16 +137,72 @@ public class UserServlet extends HttpServlet {
             saveMsg(req, resp);
         } else if (Objects.equals("/user/about/arts.do",path)) {
             setUserArts(req,resp);
+        } else if (Objects.equals("/user/sendEmail/resolve",path)) {
+            resolveAccount(req,resp);
         }
-
         else {
             req.getRequestDispatcher("/WEB-INF/views/error/404.jsp").forward(req, resp);
         }
     }
 
-    private void sendEmail(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        Visitor visitor = (Visitor) req.getSession().getAttribute("visitor");
+    private void offSuccess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String code = req.getParameter("code");
+        String email = req.getParameter("email");
+        //1. 查询code与email是否一致，用邮件查询
+        boolean flag1 = userService.isEmptyUserFindByEmailAndCode(email,code);
+        if(flag1) {
+            //查询到了，跳转至修改密码页面，删除用户
+            boolean flag2 = userService.removeUserByEmail(email);
+            if(flag2)
+                req.getRequestDispatcher("/WEB-INF/views/re/welcomeback.html").forward(req, resp);
+            else
+                req.getRequestDispatcher("/WEB-INF/views/error/500.html").forward(req, resp);
+        } else {
+            //强制跳转到登录页面
+            req.getRequestDispatcher("/WEB-INF/views/error/404.html").forward(req, resp);
+        }
+    }
 
+    private void off(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        User user = (User)req.getSession().getAttribute("user");
+        Visitor visitor = (Visitor) req.getSession().getAttribute("visitor");
+        visitor.setTime(new Date());
+        String code = userService.findUserCodeByEmail(user.getEmail());
+        user.setCode(code);
+        boolean flag = userService.sendOffEmail(user,visitor,webLocation);
+        WriteUitl.writeValue(flag,resp);
+    }
+
+    private void resolveAccount(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        String code = req.getParameter("code");
+        String email = req.getParameter("email");
+
+        //1. 查询code与email是否一致，用邮件查询
+        boolean flag1 = userService.isEmptyUserFindByEmailAndCode(email,code);
+
+        if(flag1) {
+            //查询到了，跳转至修改密码页面
+            req.getRequestDispatcher("/WEB-INF/views/re/reChange.html").forward(req, resp);
+        } else {
+            //强制跳转到登录页面
+            req.getRequestDispatcher("/WEB-INF/views/error/404.jsp").forward(req, resp);
+        }
+
+    }
+
+    private void sendEmail(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+        Date stratTime = (Date)req.getSession().getAttribute("disableTime");
+        int dis = 0;
+        if(stratTime!=null) {
+            dis = GetTimeDistance.calLastedTime(stratTime, new Date());
+        }
+        if(stratTime!=null && dis < 60) {
+            System.out.println("发送间隔过短");
+            req.getRequestDispatcher("/WEB-INF/views/biz/forgot.html").forward(req, resp);
+        };
+
+        Visitor visitor = (Visitor) req.getSession().getAttribute("visitor");
+        visitor.setTime(new Date());
         String email = req.getParameter("email");
         //通过邮箱查找是否注册成功
         boolean flag1 = userService.isEmptyUserFindByEmail(email);
@@ -146,7 +214,8 @@ public class UserServlet extends HttpServlet {
         String code = userService.findUserCodeByEmail(email);
 
         //发送带有激活码的邮件
-        boolean flag2 = userService.sendCodeEmail(code,visitor,webLocation);
+        boolean flag2 = userService.sendCodeEmail(email,code,visitor,webLocation);
+        req.getSession().setAttribute("disableTime",new Date());
         //然后重新弄一个处理器处理修改密码的
         WriteUitl.writeValue(flag2,resp);
     }
@@ -165,6 +234,7 @@ public class UserServlet extends HttpServlet {
                 e.printStackTrace();
             }
         //调用查询
+        System.out.println("开始第一次调用数据库，查找用户：---");
             boolean flag = userService.isEmptyUserFindByUsername(user.getUsername());
             //序列化JSON数据
             ResultInfo info = new ResultInfo();
@@ -214,7 +284,7 @@ public class UserServlet extends HttpServlet {
 
             //向前端响应
             resp.setContentType("application/json;charset=utf-8");
-            mapper.writeValue(resp.getOutputStream(), info);
+            WriteUitl.writeValue(info,resp);
     }
 
     /**
@@ -292,7 +362,6 @@ public class UserServlet extends HttpServlet {
         User user = (User)req.getSession().getAttribute("user");
         String password = req.getParameter("password");
         user.setPassword(Md5Util.encodeByMd5(password));
-        System.out.println(user.toString());
         boolean flag = userService.changePassword(user);
         WriteUitl.writeValue(flag,resp);
     }
@@ -389,7 +458,8 @@ public class UserServlet extends HttpServlet {
     private void saveUserImg(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         boolean flag = false;
         String imgStr = req.getParameter("img");
-        String savePath = "/images/users/ico";
+        String size = req.getParameter("size");
+        String savePath = "images/users/ico/";
         User user = (User)req.getSession().getAttribute("user");
         if (null == user) {
             //返回数据
@@ -397,19 +467,35 @@ public class UserServlet extends HttpServlet {
             return ;
         }
         String path = this.getServletContext().getRealPath(savePath);
-        String url = webLocation + "/images/users/ico/" + EncodingUtils.GenerateImage(imgStr, path);
+
+        //先存入本地路径下
+        String filePath = this.getServletConfig().getServletContext().getRealPath("/")+savePath + EncodingUtils.GenerateImage(imgStr,size, path);
+        //上传至七牛云图传
+        String fName = filePath.trim();
+        String fileName = "user/"+fName.substring(fName.lastIndexOf("/")+1);
+        System.out.println("上传头像的文件名"+fileName);
+        System.out.println("存储的文件位置"+filePath);
+        boolean isSuccess = QiNiuUtil.upload(filePath,fileName,true);
+        String url = "";
+        //删除本地路径下的文件
+        if(isSuccess) {
+            System.out.println("上传头像成功");
+            FileUtils.deleteFile(filePath);
+            url = "http://"+QiNiuUtil.fileUrl(fileName);
+        }
+
         flag = userService.saveUserImg(url,user.getUser_id());
 
         //更新后修改缓存
         if(flag) {
-            req.getSession().invalidate(); //先删除
-            user.setUser_img(url);
-            req.getSession().setAttribute("user", user);
-            req.setAttribute("user", user);
+            User u = (User)req.getSession().getAttribute("user");
+            u.setUser_img(url);
+            req.getSession().setAttribute("user", u);
+            req.setAttribute("user", u);
         }
 
         //返回数据
-        WriteUitl.writeValue(flag,resp);
+        WriteUitl.writeValue(url,resp);
     }
 
     private void updateProfile(HttpServletRequest req, HttpServletResponse resp) throws ParseException, IOException {
@@ -419,6 +505,7 @@ public class UserServlet extends HttpServlet {
         String birthdayStr = req.getParameter("birthday");
         String phone = req.getParameter("phone");
         String address = req.getParameter("address");
+        String comments = req.getParameter("comments");
 
         //简单判断用户
         User u = (User)req.getSession().getAttribute("user");
@@ -456,6 +543,9 @@ public class UserServlet extends HttpServlet {
         }
         if (isEmptyStr.isNotEmpty(address)) {
             user.setAddress(address);
+        }
+        if (isEmptyStr.isNotEmpty(comments)) {
+            user.setUser_comments(comments);
         }
 
         //更新信息

@@ -23,6 +23,13 @@ public interface UserDAO {
     boolean removeUser(Long user_id);
 
     /**
+     * 注销用户
+     * @param email
+     * @return
+     */
+    boolean removeUserByEmail(String email);
+
+    /**
      * 检查密码是否一致
      * @param user
      * @return
@@ -80,8 +87,6 @@ public interface UserDAO {
      */
     User findUser(Long user_id);
 
-    User getUser(ResultSet rs)throws SQLException;
-
     /**
      * 保存用户头像
      * @param url
@@ -110,4 +115,12 @@ public interface UserDAO {
      * @return
      */
     String findUserCodeByEmail(String email);
+
+    /**
+     * 查询用户
+     * @param email
+     * @param code
+     * @return
+     */
+    boolean isEmptyUserFindByEmailAndCode(String email, String code);
 }

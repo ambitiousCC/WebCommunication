@@ -1,11 +1,14 @@
 package beans;
 
+import java.util.Date;
+
 public class Visitor {
     private String IP;
     private String browser;
     private String browserVersion;
     private String OS;
     private String address;
+    private Date time;
 
     @Override
     public String toString() {
@@ -15,15 +18,27 @@ public class Visitor {
                 ", browserVersion='" + browserVersion + '\'' +
                 ", OS='" + OS + '\'' +
                 ", address='" + address + '\'' +
+                ", time=" + time +
                 '}';
     }
 
-    public Visitor(String IP, String browser, String browserVersion, String OS, String address) {
+    public Visitor() {}
+
+    public Visitor(String IP, String browser, String browserVersion, String OS, String address, Date time) {
         this.IP = IP;
         this.browser = browser;
         this.browserVersion = browserVersion;
         this.OS = OS;
         this.address = address;
+        this.time = time;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
     public String getIP() {

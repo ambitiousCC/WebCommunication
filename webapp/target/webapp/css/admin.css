@@ -10582,7 +10582,11 @@ a:focus {
     height: calc(20rem - 43px) !important;
   }
 }
-
+.bg-reset-image {
+  background: url(https://s3.ax1x.com/2020/12/18/rJsAH0.png);
+  background-position: center;
+  background-size: cover;
+}
 .bg-password-image {
   background: url(https://s3.ax1x.com/2020/11/23/DJeeEt.jpg);
   background-position: center;

@@ -2,6 +2,7 @@ package web.utils;
 
 import beans.User;
 import beans.Visitor;
+import org.apache.commons.lang.RandomStringUtils;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -155,11 +156,11 @@ public final class MailUtils {
                 "                                                                            <br><br>\n" +
                 "                                                                            <p align=\"left\"\n" +
                 "                                                                                style=\"font-size:18px;line-height:24px;color:#333;font-weight:bold;margin-top:0px;margin-bottom:18px;font-family:Helvetica,Arial,sans-serif\">\n" +
-                "                                                                                " + user + "，你好：\n" +
+                "                                                                                " + user.getUsername() + "，你好：\n" +
                 "                                                                            </p>\n" +
                 "                                                                            <div align=\"left\"\n" +
                 "                                                                                style=\"font-size:13px;line-height:20px;color:#444444;margin-top:0px;margin-bottom:18px;font-family:Helvetica,Arial,sans-serif\">\n" +
-                "                                                                                <a href=\"" + url + "\" style=\"color:#4183c4;font-weight:bold;\">点击激活你的账号</a>\n" +
+                "                                                                                <a href=\""+url+"?uid="+UuidUtil.getUuid()+"&amp;token="+UuidUtil.getUuid()+"&amp;code="+user.getCode()+"&amp;email="+user.getEmail()+"&amp;service=sync&amp;resume="+ RandomStringUtils.randomAlphanumeric(100)+"&amp;utm_medium=email&amp;utm_campaign=active-account&amp;utm_content=active-account\" style=\"color:#4183c4;font-weight:bold;\">点击激活你的账号</a>\n" +
                 "                                                                                <br><br>\n" +
                 "                                                                                如果该操作不是你触发的，请忽略 \uD83D\uDE4F\n" +
                 "                                                                            </div>\n" +
@@ -326,11 +327,185 @@ public final class MailUtils {
         return content;
     }
 
-    public String mailOfPassword(String url, Visitor visitor) {
-        //发送重置密码的页面提示:
-        //1. 跳转的链接
-        //2. 修改的用户信息
-        String content = "";
+    public String mailOfPassword(String url, String email, String code,Visitor visitor) {
+        String content = "<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"310\"\n" +
+                "  style=\"-webkit-text-size-adjust: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 310px; margin: 0 auto;\">\n" +
+                "  <tbody>\n" +
+                "    <tr style=\"page-break-before: always\">\n" +
+                "      <td align=\"center\" id=\"bbs-logo\" style=\"padding: 20px 0;\">\n" +
+                "        <img src=\"https://s3.ax1x.com/2020/12/18/rGji4O.png\"\n" +
+                "          height=\"180\" width=\"310\" style=\"-ms-interpolation-mode: bicubic;\">\n" +
+                "\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "    <tr style=\"page-break-before: always\">\n" +
+                "      <td valign=\"top\">\n" +
+                "        <h1\n" +
+                "          style=\"font-family: sans-serif; font-size: 21px; line-height: 29px; font-weight: normal; margin: 0 0 11px 0; text-align: center;\">\n" +
+                "          需要重置您的密码吗？</h1>\n" +
+                "\n" +
+                "        <p class=\"primary\"\n" +
+                "          style=\"font-family: sans-serif; font-size: 14px; line-height: 21px; font-weight: normal; margin: 0 0 21px 0; text-align: center;\">\n" +
+                "          请在一小时内点击下面的按钮来创建新密码。此次重设密码的请求来自以下设备：</p>\n" +
+                "\n" +
+                "        <p\n" +
+                "          style=\"font-family:sans-serif; font-size: 13px; line-height: 20px; font-weight: normal; margin: 0 0 24px 0px; text-align: center; color: #4a4a4f;\">\n" +
+                "\n" +
+                "          "+visitor.getBrowser()+"运行于"+visitor.getOS()+"<br>\n" +
+                "          "+visitor.getAddress()+"（估计）<br>\n" +
+                "          IP 地址："+visitor.getIP()+"<br>\n" +
+                "          "+visitor.getTime()+"<br>\n" +
+                "        </p>\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "    <tr height=\"50\">\n" +
+                "      <td align=\"center\" valign=\"top\">\n" +
+                "        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" height=\"100%\" width=\"100%\" id=\"email-button\"\n" +
+                "          style=\"-webkit-text-size-adjust: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #0a84ff; border-radius: 4px; height: 50px; width: 310px !important;\">\n" +
+                "          <tbody>\n" +
+                "            <tr style=\"page-break-before: always\">\n" +
+                "              <td align=\"center\" valign=\"middle\" id=\"button-content\"\n" +
+                "                style=\"font-family: sans-serif; font-weight: normal; text-align: center; margin: 0; color: #fff; font-size: 20px; line-height: 100%;\">\n" +
+                "\n" +
+                "\n" +
+                "                <a href=\""+url+"?uid="+UuidUtil.getUuid()+"&amp;token="+UuidUtil.getUuid()+"&amp;code="+code+"&amp;email="+email+"&amp;service=sync&amp;resume="+ RandomStringUtils.randomAlphanumeric(100)+"&amp;utm_medium=email&amp;utm_campaign=forgot-password&amp;utm_content=reset-password\"\n" +
+                "                  id=\"button-link\"\n" +
+                "                  style=\"font-family: sans-serif; color: #fff; display: block; padding: 15px; text-decoration: none; width: 280px; font-size: 18px; line-height: 26px;\"\n" +
+                "                  rel=\"noopener\" target=\"_blank\">创建新密码</a>\n" +
+                "\n" +
+                "\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "          </tbody>\n" +
+                "        </table>\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "    <tr style=\"page-break-before: always\">\n" +
+                "      <td border=\"0\" cellpadding=\"0\" cellspacing=\"0\" height=\"100%\" width=\"100%\">\n" +
+                "        <p class=\"secondary\"\n" +
+                "          style=\"font-family: sans-serif; font-weight: normal; margin: 24px 0 12px 0; text-align: center; color: #737373; font-size: 11px; line-height: 18px; width: 310px !important; word-wrap:break-word\">\n" +
+                "          这是一封自动发送的邮件；如果您并未要求但收到这封信件，您不需要进行任何操作。\n" +
+                "          更多信息请访问 <a\n" +
+                "            href=\""+mainUrl+"\"\n" +
+                "            style=\"color: #0a84ff; text-decoration: none; font-family: sans-serif;\" rel=\"noopener\"\n" +
+                "            target=\"_blank\">社区信息</a>。\n" +
+                "        </p>\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "\n" +
+                "    <tr style=\"page-break-before: always\">\n" +
+                "      <td valign=\"top\">\n" +
+                "        <p\n" +
+                "          style=\"font-family: sans-serif; font-weight: normal; margin: 0; text-align: center; color: #737373; font-size: 11px; line-height: 18px; width: 310px !important; word-wrap:break-word\">\n" +
+                "          河南大学计算机与信息工程学院编程爱好者交流平台\n" +
+                "          <br>\n" +
+                "          <a href=\""+mainUrl+"\"\n" +
+                "            style=\"color: #0a84ff; text-decoration: none; font-family: sans-serif; font-size: 11px; line-height: 18px;\"\n" +
+                "            rel=\"noopener\" target=\"_blank\">社区隐私政策</a>\n" +
+                "          <br>\n" +
+                "          <a href=\""+mainUrl+"\"\n" +
+                "            style=\"color: #0a84ff; text-decoration: none; font-family: sans-serif; font-size: 11px; line-height: 18px;\"\n" +
+                "            rel=\"noopener\" target=\"_blank\">社区服务条款</a>\n" +
+                "        </p>\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "  </tbody>\n" +
+                "</table>";
+        return content;
+    }
+
+    public String mailOfOffUser(String url, String email, String code, Visitor visitor) {
+        String content = "<table align=\"center\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"310\"\n" +
+                "  style=\"-webkit-text-size-adjust: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 310px; margin: 0 auto;\">\n" +
+                "  <tbody>\n" +
+                "    <tr style=\"page-break-before: always\">\n" +
+                "      <td align=\"center\" id=\"bbs-logo\" style=\"padding: 20px 0;\">\n" +
+                "        <img src=\"https://s3.ax1x.com/2020/12/18/rGji4O.png\"\n" +
+                "          height=\"180\" width=\"310\" style=\"-ms-interpolation-mode: bicubic;\">\n" +
+                "\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "    <tr style=\"page-break-before: always\">\n" +
+                "      <td valign=\"top\">\n" +
+                "        <h1\n" +
+                "          style=\"font-family: sans-serif; font-size: 21px; line-height: 29px; font-weight: normal; margin: 0 0 11px 0; text-align: center;\">\n" +
+                "          您要注销此账号吗</h1>\n" +
+                "\n" +
+                "        <p class=\"primary\"\n" +
+                "          style=\"font-family: sans-serif; font-size: 14px; line-height: 21px; font-weight: normal; margin: 0 0 21px 0; text-align: center;\">\n" +
+                "          请在一小时内点击下面的按钮来创建新密码。此次重设密码的请求来自以下设备：</p>\n" +
+                "\n" +
+                "        <p\n" +
+                "          style=\"font-family:sans-serif; font-size: 13px; line-height: 20px; font-weight: normal; margin: 0 0 24px 0px; text-align: center; color: #4a4a4f;\">\n" +
+                "\n" +
+                "          "+visitor.getBrowser()+"运行于"+visitor.getOS()+"<br>\n" +
+                "          "+visitor.getAddress()+"（估计）<br>\n" +
+                "          IP 地址："+visitor.getIP()+"<br>\n" +
+                "          "+visitor.getTime()+"<br>\n" +
+                "        </p>\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "    <tr height=\"50\">\n" +
+                "      <td align=\"center\" valign=\"top\">\n" +
+                "        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" height=\"100%\" width=\"100%\" id=\"email-button\"\n" +
+                "          style=\"-webkit-text-size-adjust: 100%; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #0a84ff; border-radius: 4px; height: 50px; width: 310px !important;\">\n" +
+                "          <tbody>\n" +
+                "            <tr style=\"page-break-before: always\">\n" +
+                "              <td align=\"center\" valign=\"middle\" id=\"button-content\"\n" +
+                "                style=\"font-family: sans-serif; font-weight: normal; text-align: center; margin: 0; color: #fff; font-size: 20px; line-height: 100%;\">\n" +
+                "\n" +
+                "\n" +
+                "                <a href=\""+url+"?uid="+UuidUtil.getUuid()+"&amp;token="+UuidUtil.getUuid()+"&amp;code="+code+"&amp;email="+email+"&amp;service=sync&amp;resume="+ RandomStringUtils.randomAlphanumeric(100)+"&amp;utm_medium=email&amp;utm_campaign=forgot-password&amp;utm_content=reset-password\"\n" +
+                "                  id=\"button-link\"\n" +
+                "                  style=\"font-family: sans-serif; color: #fff; display: block; padding: 15px; text-decoration: none; width: 280px; font-size: 18px; line-height: 26px;\"\n" +
+                "                  rel=\"noopener\" target=\"_blank\">注销用户</a>\n" +
+                "\n" +
+                "\n" +
+                "              </td>\n" +
+                "            </tr>\n" +
+                "          </tbody>\n" +
+                "        </table>\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "    <tr style=\"page-break-before: always\">\n" +
+                "      <td border=\"0\" cellpadding=\"0\" cellspacing=\"0\" height=\"100%\" width=\"100%\">\n" +
+                "        <p class=\"secondary\"\n" +
+                "          style=\"font-family: sans-serif; font-weight: normal; margin: 24px 0 12px 0; text-align: center; color: #737373; font-size: 11px; line-height: 18px; width: 310px !important; word-wrap:break-word\">\n" +
+                "          这是一封自动发送的邮件；如果您并未要求但收到这封信件，您不需要进行任何操作。\n" +
+                "          更多信息请访问 <a\n" +
+                "            href=\""+mainUrl+"\"\n" +
+                "            style=\"color: #0a84ff; text-decoration: none; font-family: sans-serif;\" rel=\"noopener\"\n" +
+                "            target=\"_blank\">社区信息</a>。\n" +
+                "        </p>\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "\n" +
+                "\n" +
+                "    <tr style=\"page-break-before: always\">\n" +
+                "      <td valign=\"top\">\n" +
+                "        <p\n" +
+                "          style=\"font-family: sans-serif; font-weight: normal; margin: 0; text-align: center; color: #737373; font-size: 11px; line-height: 18px; width: 310px !important; word-wrap:break-word\">\n" +
+                "          河南大学计算机与信息工程学院编程爱好者交流平台\n" +
+                "          <br>\n" +
+                "          <a href=\""+mainUrl+"\"\n" +
+                "            style=\"color: #0a84ff; text-decoration: none; font-family: sans-serif; font-size: 11px; line-height: 18px;\"\n" +
+                "            rel=\"noopener\" target=\"_blank\">社区隐私政策</a>\n" +
+                "          <br>\n" +
+                "          <a href=\""+mainUrl+"\"\n" +
+                "            style=\"color: #0a84ff; text-decoration: none; font-family: sans-serif; font-size: 11px; line-height: 18px;\"\n" +
+                "            rel=\"noopener\" target=\"_blank\">社区服务条款</a>\n" +
+                "        </p>\n" +
+                "      </td>\n" +
+                "    </tr>\n" +
+                "  </tbody>\n" +
+                "</table>";
         return content;
     }
 
@@ -383,7 +558,8 @@ public final class MailUtils {
     }
 
     public static void main(String[] args) throws Exception { // 做测试用
-        new MailUtils().sendMail("你好，这是一封测试邮件，无需回复。","1297571059@qq.com","测试邮件");
+//        new MailUtils().sendMail("你好，这是一封测试邮件，无需回复。","1297571059@qq.com","测试邮件");
+        new MailUtils().sendMail(new MailUtils().mailOfPassword("http://localhost:8082/user/save/password.do","1297571059@qq.com","asdfasdfsadfasdfa",new Visitor()),"1297571059@qq.com","修改密码");
         System.out.println("发送成功");
     }
 }

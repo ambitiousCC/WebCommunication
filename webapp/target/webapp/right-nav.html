@@ -2,44 +2,50 @@
 <div class="sentence"><strong>每日一句</strong>
     <!-- 调用js设置时间 -->
     <h2 id="right-nav-time" style="height:32px"></h2>
-    <p>你是我人生中唯一的主角，我却只能是你故事中的一晃而过得路人甲。</p>
+    <p>今天你学习了吗？</p>
 </div>
 <div class="right-users" style="height:auto;">
-<div id="user" style="display:block;text-align:center;">
-    <div class="title-photo" id="user-ico" style="width: 100%;height: 100px">
-        <img id="user-png" alt="" style="max-width: 100%;max-height: 100%;height: 100%;border-radius: 50%">
+    <div id="user" style="display:block;text-align:center;">
+        <div class="title-photo" id="user-ico" style="width: 100%;height: 100px">
+            <img id="user-png" alt="" style="max-width: 100%;max-height: 100%;height: 100%;border-radius: 50%">
+        </div>
+        <h3 class="user_name user" id="user-name-label" style="height: 30px;margin-top: 5px;">
+            <a href="/about" id="a_username"></a></h3>
+        <p class="user_name msg" id="a_user_des"></p><br>
     </div>
-    <h3 class="user_name user" id="user-name-label" style="height: 30px;margin-top: 5px;">
-        <a href="/about" style="color: #fff;" id="a_username"></a></h3>
-    <p class="user_name msg" id="a_user_des"></p><br>
-</div>
-<div id="unuser" style="display:none;text-align:center;">
-    <h3>欢迎您！</h3>
-    <p>游客8848</p>
-    <p>您有账号嘛？请<a href="/sign" class="sign-about">登录</a>，或者<a href="/sign" class="sign-about">注册</a></p>
-</div>
+    <div id="unuser" style="display:none;text-align:center;">
+        <h3>欢迎您！</h3>
+        <p>游客8848</p>
+        <p>您有账号嘛？请<a href="/sign" class="sign-about">登录</a>，或者<a href="/sign" class="sign-about">注册</a></p>
+    </div>
 </div>
 <!--如果要这个功能就得在插入信息之后插入盒子，否则会变形-->
-<div id="search-box"></div>
 <div class="sidebar-block recommend">
     <h2 class="title"><strong>热门推荐</strong></h2>
     <ul>
         <!--          这里的图片插入路径算是很迷惑-->
-<!--        <li>-->
-<!--            <a target="_blank" href=""><span class="thumb"><img src="images/icon/icon.png" alt=""></span><span-->
-<!--                    class="text">文字</span> <span class="text-muted">阅读(2165)</span></a>-->
-<!--        </li>-->
+        <li>
+            <a target="_blank" href="content?article_id=10"><span class="thumb"><img src="//img.ambitiouscc.com/%2Farticle%2Fimgs%2F0b774d13a7fa4f67b9d45598c0882c38.png?e=1608389326&token=ZYQgUMVT4cgSUOdzV__LZUOA6C4YvE2GZhXXJnDm:7Ee5hDWiJ1rGLyg7H8pekwkeGkg=" alt=""></span><span
+                    class="text">【分享】连接图床测试#2</span> <span class="text-muted">阅读量null</span></a>
+        </li>
+        <li>
+            <a target="_blank" href="content?article_id=12"><span class="thumb"><img src="//img.ambitiouscc.com/%2Farticle%2Fimgs%2Fe40e5493d72e43ce95665bd97d089ca5.jpg?e=1608458185&token=ZYQgUMVT4cgSUOdzV__LZUOA6C4YvE2GZhXXJnDm:fZvyX0XPQ3nu1EqMmERQ_SWm5mI=" alt=""></span><span
+                    class="text">【测试】测试1</span> <span class="text-muted">阅读量null</span></a>
+        </li>
     </ul>
 </div>
 <div class="sidebar-block comment">
     <h2 class="title"><strong>最新评论</strong></h2>
     <ul>
-<!--        <li data-toggle="tooltip" data-placement="top" title="文字">-->
-<!--            <a target="_blank" href="">-->
-<!--                <span class="face"><img src="" alt="这里插入用户的头像"></span>-->
-<!--                <span class="text"><strong>文字</strong> (2015-10-18) 说：<br/>文字</span>-->
-<!--            </a>-->
-<!--        </li>-->
+        <li>
+            <a class="post-link" href="content?article_id=10">【分享】连接图床测试#2</a>
+        </li>
+        <!--        <li data-toggle="tooltip" data-placement="top" title="文字">-->
+        <!--            <a target="_blank" href="">-->
+        <!--                <span class="face"><img src="" alt="这里插入用户的头像"></span>-->
+        <!--                <span class="text"><strong>文字</strong> (2015-10-18) 说：<br/>文字</span>-->
+        <!--            </a>-->
+        <!--        </li>-->
     </ul>
 </div>
 <!--/右侧>992px显示-->

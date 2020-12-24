@@ -152,73 +152,75 @@ $(function () {
     //绑定点击事件
     $("#login").click(function () {
         var btn = $("#login");
-        var username = $("#username").val();
-        var password = md5($("#password").val());
-        // var target = encrypt("login");
-        $.post("/user/login", {
-            username:username,
-            password:password
-        }, function (data) {
-            var flag = data.flag;
-            if (flag) {
-                btn.button('loading').delay(1000).queue(function () {
-                    btn.button('reset');
-                });
-                location.href = "/main";
-            } else {
-                $("#login_form").removeClass('shake_effect');
-                setTimeout(function () {
-                    $("#login_form").addClass('shake_effect')
-                }, 1);
-                $("#login_errorMsg").html(data.errorMsg);
-                return false;
-            }
+        btn.button('loading').delay(1000).queue(function () {
+            var username = $("#username").val();
+            var password = md5($("#password").val());
+            // var target = encrypt("login");
+            $.post("/user/login", {
+                username:username,
+                password:password
+            }, function (data) {
+                var flag = data.flag;
+                if (flag) {
+                    location.href = "/main";
+                } else {
+                    $("#login_form").removeClass('shake_effect');
+                    setTimeout(function () {
+                        $("#login_form").addClass('shake_effect')
+                    }, 1);
+                    $("#login_errorMsg").html(data.errorMsg);
+                    btn.button('reset').dequeue();
+                    return false;
+                }
+            });
+            return false;
         });
-        return false;
     });
     //当表单提交时，调用所有的校验方法：注册的方法
     $("#create").click(function () {
         var btn = $("#create");
-        //1.发送数据到服务器
-        if (checkUsername() && checkPassword() && checkEmail() && confirmPassword()) {
-            var username = $("#r_username").val();
-            var password = md5($("#r_password").val());
-            var email = $("#r_email").val();
-            $.ajax({
-                url: "/user/regist",
-                type: "post",
-                data: {
-                    username: username,
-                    //前段需要MD5的加密
-                    password: password,
-                    email: email
-                },
-                dataType: "json",
-                success: function (data) {
-                    if (data.flag) {
-                        btn.button('loading').delay(1000).queue(function () {
-                            btn.button('reset');
+        btn.button('loading').delay(1000).queue(function () {
+            //1.发送数据到服务器
+            if (checkUsername() && checkPassword() && checkEmail() && confirmPassword()) {
+                var username = $("#r_username").val();
+                var password = md5($("#r_password").val());
+                var email = $("#r_email").val();
+                $.ajax({
+                    url: "/user/regist",
+                    type: "post",
+                    data: {
+                        username: username,
+                        //前段需要MD5的加密
+                        password: password,
+                        email: email
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.flag) {
                             alert("请在您的邮箱激活您的账号");
                             location.href = "/sign";
-                        });
-                    } else {
-                        $("#login_form").removeClass('shake_effect');
-                        setTimeout(function () {
-                            $("#login_form").addClass('shake_effect')
-                        }, 1);
-                        $("#regist_errorMsg").html(data.errorMsg);
-                        return false;
+                        } else {
+                            $("#login_form").removeClass('shake_effect');
+                            setTimeout(function () {
+                                $("#login_form").addClass('shake_effect')
+                            }, 1);
+                            $("#regist_errorMsg").html(data.errorMsg);
+                            btn.button('reset').dequeue();
+                            return false;
+                        }
                     }
-                }
-            });
-        } else {
-            $("#login_form").removeClass('shake_effect');
-            setTimeout(function () {
-                $("#login_form").addClass('shake_effect')
-            }, 1);
-            return false;
-        }
-        //如果这个方法没有返回值，或者返回为true，则表单提交，如果返回为false，则表单不提交
+                });
+            } else {
+                btn.button('reset').dequeue();
+                $("#login_form").removeClass('shake_effect');
+                setTimeout(function () {
+                    $("#login_form").addClass('shake_effect')
+                }, 1);
+                return false;
+            }
+            //如果这个方法没有返回值，或者返回为true，则表单提交，如果返回为false，则表单不提交
+        });
+
     });
     //登录的方法
     //当某一个组件失去焦点是，调用对应的校验方法

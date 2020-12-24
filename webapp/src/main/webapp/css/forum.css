@@ -1,0 +1,22 @@
+
+html {
+    border: 0;
+    padding: 0%;
+}
+
+.bg-forum {
+    background-color:#e5e5e5;
+}
+
+.forum-content{
+    float: left;
+}
+.forum-name{
+    float: right;
+}
+.forum-content a,.forum-name a{
+    color: #fff;
+}
+.forum-content a:hover,.forum-name a:hover{
+    color: #000;
+}

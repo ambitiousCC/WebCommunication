@@ -32,7 +32,7 @@ $("#user-submit-btn").on('click',function () {
     var address = $("#address").val();
     var comments = $("#bef-comments").val();
     changeProfile(name,des,sex,birthday,phone,address,comments);
-})
+});
 
 function createDate(birthday) {
     var date = null;
@@ -83,11 +83,12 @@ function changeProfile(name, des, sex, birthday, phone, address, comments) {
         sex:sex,
         birthday:birthday,
         phone:phone,
-        address:comments,
+        address:address,
+        comments:comments
     },function (data) {
         if (data) {
             //保存成功
-            alert(data);
+            alert("保存成功");
             return false;
         } else {
             //保存失败
@@ -202,13 +203,28 @@ $(document).on('click', '#setArticle', function () {
     }
 });
 
+
+//注销用户
+$(document).on('click',"#deleteUserBtn",function () {
+    //1. 发送邮件确认
+    $.post("/user/off.do",{},function (data) {
+        if(data) {
+            alert("邮件已发送");
+        } else {
+            location.href="/sign";
+        }
+    })
+    //2. 在邮件中提供注销用户的功能
+});
+
 //修改资料
 function loadImgChangFunction() {
+    var Size = 0;
     //做个下简易的验证  大小 格式
     $('#avatarInput').on('change', function (e) {
         var filemaxsize = 1024; //5M
         var target = $(e.target);
-        var Size = target[0].files[0].size / 1024;
+        Size = target[0].files[0].size / 1024;
         if (Size > filemaxsize) {
             alert('图片过大，请重新选择!');
             $(".avatar-wrapper").childre().remove;
@@ -236,15 +252,17 @@ function loadImgChangFunction() {
                 var dataUrl = canvas.toDataURL("image/jpeg");
                 var newImg = document.createElement("img");
                 newImg.src = dataUrl;
-                imagesAjax(dataUrl)
+                imagesAjax(dataUrl,Size);
             }
         });
     });
 }
 
-function imagesAjax(src) {
+function imagesAjax(src,imgSize) {
     var data = {};
+    imgSize = Math.round(imgSize);
     data.img = src;
+    data.size = imgSize;
     $.ajax({
         url: "/user/save/userImg.do",
         data: data,
@@ -253,8 +271,8 @@ function imagesAjax(src) {
         success: function (result) {
             if (result) {
                 //#user-png用户头像框修改
-                $('#user-png').attr('src', src);
-                $("#user-png-change").attr('src', src);
+                $('#user-png').attr('src', result);
+                $("#user-png-change").attr('src', result);
             } else {
                 //修改头像失败
                 alert("修改头像失败");
@@ -295,7 +313,7 @@ function createTags(n,val,user) {
     $("#bef-birthday").html(birthday+"(生日)");
     $("#bef-tel").html(user.phone+"(手机号码)");
     $("#bef-address").html(user.address+"(收货地址)");
-    $("#bef-comments").html(user.comments);
+    $("#bef-comments").html(user.user_comments);
     $("#user-png-change").attr("src",user.user_ico);
     $("#set-article").css('display','block');
 }
@@ -322,6 +340,7 @@ function delArt(article_id) {
     })
 }
 
+//修改文章
 function change(article_id) {
     location.href="/write?article="+article_id;
 }
@@ -332,7 +351,7 @@ function loadArtList(data) {
         var art = data.articles[i];
         var artList = '';
         artList += '<div class="news-list">\n' +
-            '<a style="float: left;"><span class="art-tags">【标签】</span><span class="set-article-title">'+art.title+'</span></a>\n' +
+            '<a style="float: left;" href="/content?article_id='+art.article_id+'"><span class="set-article-title">'+art.title+'</span></a>\n' +
             '<span class="art-name" style="float:right;">\n' +
             '<span class="identity">\n' +
             '<span class="art-time">'+timestampToTimeInUse(art.create_time)+'</span>\n' +

@@ -21,8 +21,31 @@ function checkEmail() {
 }
 
 function sendtemp(email) {
-    $.post("/user/sendEmail",{
-        email:email,
+    $.get("/user/sendEmail",{
+        email:email
     },function (data) {
+        if(data) {
+            $("#reset-email").attr("disabled","disabled");
+            disableBtn();
+        } else {
+            alert("服务器异常，请人工申诉");
+        }
     });
+}
+
+var disableTime = 60;
+function disableBtn() {
+    if(disableTime === 0) {
+        disableTime = 60;
+        $("#reset-email").removeAttr("disabled");
+        $("#timeleast").html("");
+        return false;
+    } else {
+        disableTime --;
+        $("#timeleast").html(",请稍后("+disableTime+")");
+    }
+    setTimeout(function () {
+        disableBtn();
+    },1000);
+    return true;
 }

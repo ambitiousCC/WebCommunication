@@ -10,7 +10,6 @@ public class EncodingUtils {
     public static void main(String[] args) {
         String ImgStr = "";
         String saveURL = "\\D:\\JAVA";
-        GenerateImage(ImgStr,saveURL);
     }
 
     public static String GetBaseCode(String base64) {
@@ -46,12 +45,12 @@ public class EncodingUtils {
     }
 
     //base64字符串转化成图片
-    public static String GenerateImage(String imgStr,String saveURL)
-    {   //对字节数组字符串进行Base64解码并生成图片
+    public static String GenerateImage(String imgStr,String sizeStr,String saveURL) throws IOException {   //对字节数组字符串进行Base64解码并生成图片
         if (imgStr == null) //图像数据为空
         {
             return null;
         }
+
         BASE64Decoder decoder = new BASE64Decoder();
         try
         {
@@ -67,7 +66,7 @@ public class EncodingUtils {
             }
             //生成jpeg图片
             String fileName = UuidUtil.getUuidFileName("."+GetImgType(imgStr));
-            String URL = saveURL + "\\" + fileName;
+            String URL = saveURL + "/" + fileName;
             OutputStream out = new FileOutputStream(URL);
             out.write(b);
             out.flush();

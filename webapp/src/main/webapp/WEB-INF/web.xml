@@ -6,7 +6,6 @@
     <welcome-file-list>
         <welcome-file>/WEB-INF/views/biz/sign.html</welcome-file>
     </welcome-file-list>
-<!--    过滤器配置-->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
         <filter-class>filter.CharacterEncodingFilter</filter-class>
@@ -19,13 +18,16 @@
             <param-value>UTF-8</param-value>
         </init-param>
         <init-param>
+            <param-name>contentType</param-name>
+            <param-value>text/html;charset=UTF-8</param-value>
+        </init-param>
+        <init-param>
             <param-name>forceEncoding</param-name>
             <param-value>true</param-value>
         </init-param>
     </filter>
     <filter-mapping>
         <filter-name>CharacterEncodingFilter</filter-name>
-<!--        根据需求更改url-->
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
@@ -39,14 +41,13 @@
         </init-param>
         <init-param>
             <param-name>hostname</param-name>
-            <param-value>localhost:8082</param-value>
+            <param-value>bbs.ambitiouscc.com</param-value>
         </init-param>
     </filter>
     <filter-mapping>
         <filter-name>UserFilter</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
-<!--    路径分配-->
     <servlet>
         <servlet-name>DispatcherServlet</servlet-name>
         <servlet-class>web.servlet.DispatcherServlet</servlet-class>
@@ -67,7 +68,7 @@
         <url-pattern>/write</url-pattern>
         <url-pattern>/forget</url-pattern>
     </servlet-mapping>
-<!--    文章的详细信息-->
+
     <servlet>
         <servlet-name>ContentServlet</servlet-name>
         <servlet-class>web.servlet.ContentServlet</servlet-class>
@@ -95,7 +96,7 @@
         <url-pattern>/content/com/delCommentMain.do</url-pattern>
         <url-pattern>/content/art/saveHeadImg.do</url-pattern>
     </servlet-mapping>
-<!--登录注册退出查询邮件的配置-->
+
     <servlet>
         <servlet-name>UserServlet</servlet-name>
         <servlet-class>web.servlet.UserServlet</servlet-class>
@@ -106,6 +107,9 @@
         <url-pattern>/user/regist</url-pattern>
         <url-pattern>/user/exist</url-pattern>
         <url-pattern>/user/sendEmail</url-pattern>
+        <url-pattern>/user/sendEmail/resolve</url-pattern>
+        <url-pattern>/user/off.do</url-pattern>
+        <url-pattern>/user/off/success</url-pattern>
         <url-pattern>/user/check.do</url-pattern>
         <url-pattern>/user/activeAccount</url-pattern>
         <url-pattern>/user/findUser.do</url-pattern>
@@ -117,17 +121,17 @@
         <url-pattern>/user/save/profile.do</url-pattern>
         <url-pattern>/user/save/update.do</url-pattern>
     </servlet-mapping>
-<!--    分页查询-->
+
     <servlet>
         <servlet-name>GlobeServlet</servlet-name>
         <servlet-class>web.servlet.GlobeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-<!--        查询的时候只要?cid=?就可以，通过cid来分类数据-->
+
         <servlet-name>GlobeServlet</servlet-name>
         <url-pattern>/globe/article</url-pattern>
     </servlet-mapping>
-<!--    错误页面-->
+
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/views/error/404.html</location>

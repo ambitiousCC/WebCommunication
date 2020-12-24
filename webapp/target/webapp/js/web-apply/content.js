@@ -30,7 +30,7 @@ function loadArt(user) {
     data.create_time = timestampToTime(data.create_time);
     $("#art-title").html(data.title);
     $("#art-des").html(data.des);
-    $("#art-author-ico").attr("src",data.user.user_ico);
+    $("#art-author-ico").attr("src",user.user_ico);
     $("#art-author").html(data.article_author);
     $("#art-create_time").html(data.create_time);
     $("#article-content").html(data.content.content);
@@ -51,7 +51,7 @@ function loadArt(user) {
             '<span class="glyphicon glyphicon-thumbs-up" style="color: #1E9FFF;"></span>';
         } else {
             a+='<a class="art-comment-main-like comment-zan" onclick="addCommentMainLike('+data.commentMains[i].id+')">\n' +
-            '<span class="glyphicon glyphicon-thumbs-up" style="color: #fff;"></span>';
+            '<span class="glyphicon glyphicon-thumbs-up"></span>';
         }
         liStr += a;
         liStr +=

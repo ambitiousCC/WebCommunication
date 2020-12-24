@@ -1,4 +1,5 @@
 package web.utils;
+
 import com.mchange.v1.db.sql.ConnectionUtils;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
@@ -15,16 +16,16 @@ public final class JDBCUtils {
     private static final ComboPooledDataSource datasource = new ComboPooledDataSource();
 
     static {
+        System.out.println("开始初始化JDBCUtils类：");
         Properties props = new Properties();
         InputStream in = ConnectionUtils.class.getClassLoader().getResourceAsStream("ConnectionUtils.c3p0.properties");
-        System.out.println("c3p0 connects successfully step1");
         try {
             props.load(in);
             datasource.setDriverClass(props.getProperty("driverClass"));
             datasource.setJdbcUrl(props.getProperty("jdbcUrl"));
             datasource.setUser(props.getProperty("user"));
             datasource.setPassword(props.getProperty("password"));
-            System.out.println("数据库连接成功2");
+            System.out.println("数据库连接成功");
         } catch (IOException e) {
             System.out.println("test for connection failed");
             e.printStackTrace();
@@ -44,7 +45,6 @@ public final class JDBCUtils {
 
     public static Connection getConnection() throws SQLException {
         Connection conn = datasource.getConnection();
-        System.out.println("c3p0 connects successfully step2");
         return conn;
     }
 

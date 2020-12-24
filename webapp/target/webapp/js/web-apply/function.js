@@ -14,7 +14,7 @@ $(function () {
 			'<div class="input-group">\n' +
 			'<input type="text" class="form-control" size="35" placeholder="请输入关键字" id="input-search">\n' +
 			'<span class="input-group-btn" id="btn-search">\n' +
-			'<button class="btn btn-default btn-search" type="submit" onclick="searching()">搜索</button>\n' +
+			'<button class="btn btn-default btn-search" type="button" onclick="searching()">搜索</button>\n' +
 			'</span>\n' +
 			'</div>\n' +
 			'</form>\n' +

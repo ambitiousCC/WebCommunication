@@ -4,9 +4,10 @@ var editor = null;
 //验证登录才能写文
 $(function () {
     $('input').labelauty();
-    loadUse();
+    var id = getParameter("article_id");
+    loadUse(id);
 });
-function loadUse() {
+function loadUse(id) {
     $.get("/user/findUser.do", {}, function (data) {
         if (data.user_id === null||undefined===data.user_id) {
             //未登录提醒并隐藏编辑器
@@ -17,21 +18,33 @@ function loadUse() {
         } else {
             //登录以后才会有编辑器
             //并隐藏token值
-            $("#text-un-tips").css("display","none");
-            $("#text-container").css("display","block");
-            $("#text-tips").css("display","block");
-            loadKey(editor);
-            checkLength();
-            var k;
-            loadBtns();
-            var des = $("#text-des-input").val();
-            if (des === "") {
-                k = setInterval(function () {layer.tips('这里是写摘要的地方哦！', "#art-des-btn");},10000);
+            if(id==null) {
+                $("#text-un-tips").css("display","none");
+                $("#text-container").css("display","block");
+                $("#text-tips").css("display","block");
+                loadKey(editor);
+                checkLength();
+                var k;
+                loadBtns();
+                var des = $("#text-des-input").val();
+                if (des === "") {
+                    k = setInterval(function () {layer.tips('这里是写摘要的地方哦！', "#art-des-btn");},10000);
+                } else {
+                    clearInterval(k);
+                }
             } else {
-                clearInterval(k);
+                //传入文章内容
+                loadArtContent(id);
             }
         }
     });
+}
+
+function loadArtContent(id) {
+    $.get("/content/art/edit.do",{},function (data) {
+
+    });
+
 }
 
 function loadKey(editor){
@@ -151,30 +164,6 @@ $("#srcImg").on('click',function () {
         content: $('#photo')
     });
 });
-//改变图片尺寸的思路
-function changeSize() {
-    var maxWidth = 576; // 图片最大宽度
-    var maxHeight = 324;    // 图片最大高度
-    var ratio = 0;  // 缩放比例
-    var width = $(this).width();    // 图片实际宽度
-    var height = $(this).height();  // 图片实际高度
-
-    // 检查图片是否超宽
-    if(width > maxWidth){
-        ratio = maxWidth / width;   // 计算缩放比例
-        $(this).css("width", maxWidth); // 设定实际显示宽度
-        height = height * ratio;    // 计算等比例缩放后的高度
-        $(this).css("height", height);  // 设定等比例缩放后的高度
-    }
-
-    // 检查图片是否超高
-    if(height > maxHeight){
-        ratio = maxHeight / height; // 计算缩放比例
-        $(this).css("height", maxHeight);   // 设定实际显示高度
-        width = width * ratio;    // 计算等比例缩放后的高度
-        $(this).css("width", width * ratio);    // 设定等比例缩放后的高度
-    }
-}
 //主体部分！！！！：获得文章内容
 $(document).on('click','#art-post-btn',function () {
         var title = $("#text-title").val();

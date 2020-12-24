@@ -80,13 +80,12 @@ function timestampToTime(timestamp) {
 function searching() {
     $.get("/user/findUser.do",{},function (data) {
         if(null===data.user_id||undefined===data.user_id) {
-            window.location.href = "/globe";
+            window.location.href = window.location.origin + "/sign";
             alert("登陆以后才具有搜索功能");
+
         } else {
             var title = $("#input-search").val();
-            window.location.href = "/globe?title=" + title;
-            alert("这些是搜索的结果");
-            return false;
+            window.location.href = window.location.origin + "/globe?title=" + title;
         }
     });
 }
